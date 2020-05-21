@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Shopping page</title>
+    <link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            font-family: 'Cabin';
+        }
+
+        body {
+            background: url(https://goldwallpapers.com/uploads/posts/jewellery-background-wallpaper/jewellery_background_wallpaper_002.jpg) no-repeat center center fixed;
+            background-color: #323232;
+			-webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        #main {
+            width: 35%;
+            margin: 5% auto;
+        }
+
+        #tab-btn {
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .login, .register {
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            background-color: #37474f;
+            text-align: center;
+            color: #fff;
+            font-size: 25px;
+            padding: 10px;
+        }
+
+        .active {
+            background-color: #C4E0EA;
+            color: #000;
+        }
+
+        .content, .other {
+            overflow-x: auto;
+            width: 100%;
+            background-color: #525252;
+            padding: 20px 30px 30px 30px;
+            box-shadow: 2px 2px 5px #333;
+        }
+
+        .other {
+            display: none;
+        }
+
+        .inp {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            font-size: 20px;
+            border: 2px solid #888;
+            border-bottom: 5px solid #888;
+            background-color: #fff;
+            color: #666;
+        }
+
+            .inp:focus {
+                outline: none;
+                border: 2px solid #555;
+                border-bottom: 5px solid #555;
+            }
+
+        .sub-btn {
+            width: 33%;
+            padding: 12px;
+            margin-left: 1px;
+            margin-right: 1px;
+            border: 1px solid black;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: #2873E8;
+            color: white;
+            cursor: pointer;
+            border-bottom: 5px solid #444;
+        }
+
+            .sub-btn:focus {
+                outline: none;
+            }
+
+            .sub-btn:active {
+                border: none;
+                margin-top: 5px;
+            }
+
+            .sub-btn:hover {
+                background-color: #61E47B;
+            }
+
+        .sub-btn-disabled {
+            width: 33%;
+            padding: 12px;
+            margin-left: 1px;
+            margin-right: 1px;
+            border: 1px solid black;
+            font-size: 20px;
+            font-weight: bold;
+            border-bottom: 5px solid #444;
+            color: #494949;
+            background-color: #E3E3E3;
+        }
+
+            .sub-btn-disabled:active {
+                border: none;
+                margin-top: 5px;
+            }
+
+            .sub-btn-disabled:hover {
+                background-color: #DD6060;
+            }
+
+
+        h1 {
+            text-align: center;
+            padding-bottom: 15px;
+            color: white;
+            font-size: 30px;
+        }
+
+        h2 {
+            text-align: center;
+            padding-bottom: 15px;
+            color: white;
+            font-size: 20px;
+        }
+
+
+        table, th, tr {
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            border: 2px solid black;
+            color: white;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 15px;
+            color: white;
+            font-size: 60px;
+            font-variant: small-caps;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="main">
+        <div>
+            <h1 name="header" id="header-id" class="header">U-Jewelries</h1>
+        </div>
+        <div id="container" class="content"></div>
+    </div>
+</body>
+</html>
