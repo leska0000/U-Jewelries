@@ -1,0 +1,324 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <title>Login</title>
+    <link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            font-family: 'Cabin';
+        }
+
+        body {
+            background: url(https://goldwallpapers.com/uploads/posts/jewellery-background-wallpaper/jewellery_background_wallpaper_002.jpg) no-repeat center center fixed;
+            background-color: #323232;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        #main {
+            width: 35%;
+            margin: 180px auto;
+        }
+
+        #tab-btn {
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .login, .register {
+            border: solid 2px #323232;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            background-color: #4B5768;
+            text-align: center;
+            color: #fff;
+            font-size: 25px;
+            padding: 10px;
+        }
+
+        .active {
+            background-color: #C0CEE3;
+            color: #000;
+        }
+
+        .content, .other {
+            width: 100%;
+            background-color: #525252;
+            padding: 20px 30px 30px 30px;
+            box-shadow: 2px 2px 5px #333;
+        }
+
+        .other {
+            display: none;
+        }
+
+        .inp {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            font-size: 20px;
+            border: 2px solid #888;
+            border-bottom: 5px solid #888;
+            background-color: #fff;
+            color: #666;
+        }
+
+            .inp:focus {
+                outline: none;
+                border: 2px solid #555;
+                border-bottom: 5px solid #555;
+            }
+
+        .sub-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: #2873E8;
+            color: #fff;
+            cursor: pointer;
+            border-bottom: 5px solid #444;
+        }
+
+            .sub-btn:focus {
+                outline: none;
+            }
+
+            .sub-btn:active {
+                border: none;
+                margin-top: 5px;
+            }
+
+            .sub-btn:hover {
+                background-color: #52D66A;
+            }
+
+        h2 {
+            text-align: center;
+            padding-bottom: 15px;
+            color: white;
+            font-size: 30px;
+            font-variant: small-caps;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 15px;
+            color: white;
+            font-size: 60px;
+            font-variant: small-caps;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div>
+            <h1 name="header" id="header-id" class="header">U-Jewelries</h1>
+        </div>
+        <div id="tab-btn">
+            <a href="#" class="login active">Login</a>
+            <a href="#" class="register">Register</a>
+        </div>
+        <div class="content">
+            <h2>Login</h2>
+            <form action="#" method="get" id="login-box">
+                <input id="login_name" type="text" placeholder="Login name" class="inp" required autofocus />
+                <input id="password" type="text" placeholder="Password" class="inp" required autofocus />
+                <br />
+                <button id="login" class="sub-btn" type="button" onclick="LoginValidation()">Login</button>
+                <br />
+            </form>
+        </div>
+        <div class="other">
+            <h2>Create account</h2>
+            <form action="#" method="get" id="reg-box">
+                <input id="newId" type="number" placeholder="id" class="inp" required autofocus />
+                <br />
+                <input id="newName" type="text" placeholder="Name" class="inp" required autofocus />
+                <br />
+                <input id="newLoginName" type="text" placeholder="Login name" class="inp" required autofocus />
+                <br />
+                <input id="newPassword" type="password" placeholder="Password" class="inp" required autofocus />
+                <br />
+                <button id="register" class="sub-btn" type="button" onclick="CreateAccount()">Create account</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+
+        function LoginValidation() {
+            if ($("#login_name").val() !== "") {
+                if ($("#password").val() !== "") {
+                    $.ajax({
+                        cache: false,
+                        dataType: "json",
+                        url: "api/Welcom/Login/?loginName=" + $("#login_name").val() + "&password=" + $("#password").val(),
+                        contentType: "application/json; charset=utf-8",
+                        type: "GET",
+                        success: function (data) {
+                            if (data != null) {
+                                if (data.is_manager == "no") {
+                                    delete data["Purchases"];
+                                    localStorage.setItem("costumer", JSON.stringify(data));
+                                    document.location.href = "ProductsPage.html";
+                                }
+                                else {
+                                    delete data["Purchases"];
+                                    localStorage.setItem("costumer", JSON.stringify(data));
+                                    document.location.href = "AdminPage.html";
+                                }
+                            }
+                            else {
+                                alert("Wrong login name or password try again.");
+                            }
+                        },
+                        error: function (err) {
+                            alert("Wrong login name or password try again.");
+                        }
+                    });
+                } else {
+                    alert("password cant be empty, please enter password.")
+                }
+            }
+            else {
+                alert("Login name cant be empty, please enter login name.")
+            }
+        }
+
+
+        function CreateAccount() {
+            if ($("#newLoginName").val() !== "") {
+                if ($("#newPassword").val() !== "") {
+                    if ($("#newId").val() !== "") {
+                        if ($("#newName").val() !== "") {
+                            $.ajax({
+                                dataType: "json",
+                                url: "api/Welcom/CheckLoginName/?loginName=" + $("#newLoginName").val(),
+                                contentType: "application/json; charset=utf-8",
+                                type: "GET",
+                                success: function (data) {
+                                    if (data == null) {
+                                        $.ajax({
+                                            dataType: "json",
+                                            url: "api/Welcom/CheckId/?id=" + $("#newId").val(),
+                                            contentType: "application/json; charset=utf-8",
+                                            type: "GET",
+                                            success: function (data) {
+                                                if (data == null) {
+                                                    var costumer =
+                                                    {
+                                                        personal_id: $("#newId").val(),
+                                                        name: $("#newName").val(),
+                                                        login_name: $("#newLoginName").val(),
+                                                        password: $("#newPassword").val(),
+                                                        is_manager: "no"
+                                                    }
+
+                                                    $.ajax({
+                                                        dataType: "json",
+                                                        url: "api/Welcom/Create",
+                                                        contentType: "application/json; charset=utf-8",
+                                                        type: "PUT",
+                                                        data: JSON.stringify(costumer),
+                                                        success: function (data) {
+                                                            alert("Success a new account has been created!");
+                                                        },
+                                                        error: function (err) {
+                                                            alert("Error cant create account please try again.");
+                                                        }
+                                                    });
+                                                }
+                                                else {
+                                                    alert("Id already exist and most be unique please change it.");
+                                                }
+                                            },
+                                            error: function (err) {
+                                                alert("Creating user DB Error.");
+                                            }
+                                        });
+                                    }
+                                    else {
+                                        alert("Login name already exist and most be unique please change it.");
+                                    }
+                                },
+                                error: function (err) {
+                                    alert("Getting user details from DB Error.");
+                                }
+                            });
+                        }
+                        else {
+                            alert("Name cant be empty, please enter name.");
+                        }
+
+                    }
+                    else {
+                        alert("Personal id cant be empty, please enter Personal id.");
+                    }
+                }
+                else {
+                    alert("Password cant be empty, please enter password.");
+                }
+            }
+            else {
+                alert("Login name cant be empty, please enter login name.");
+            }
+        }
+
+        function GetShopName() {
+            $.ajax({
+                dataType: "json",
+                url: "api/design/GetShopName",
+                contentType: "application/json; charset=utf-8",
+                type: "GET",
+                success: function (data) {
+                    if (data != null) {
+                        $("#header-id").text(data);
+                    }
+                    else {
+                        alert("Cant load shop information.");
+                    }
+                },
+                error: function (err) {
+                    alert("Error cload shop information please refresh the page.");
+                }
+            });
+        }
+
+        GetShopName();
+        $(document).ready(function () {
+
+            $(".register").click(function () {
+                $(".other").show();
+                $(".content").hide();
+                $(".register").addClass('active');
+                $(".login").removeClass('active');
+            });
+            $(".login").click(function () {
+                $(".content").show();
+                $(".other").hide();
+                $(".login").addClass('active');
+                $(".register").removeClass('active');
+            });
+        });
+
+    </script>
+</body>
+</html>

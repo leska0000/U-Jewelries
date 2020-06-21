@@ -1,0 +1,673 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <title>Admin managmet</title>
+    <link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            font-family: 'Cabin';
+        }
+
+        body {
+            background: url(https://goldwallpapers.com/uploads/posts/jewellery-background-wallpaper/jewellery_background_wallpaper_002.jpg) no-repeat center center fixed;
+            background-color: #323232;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        #main {
+            width: 45%;
+            margin: 200px auto;
+        }
+
+        #tab-btn {
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .create_acount, .create_product, .make_admin, .update_product, .go_back, .design_store {
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            background-color: #4B5768;
+            border: solid 2px #323232;
+            text-align: center;
+            color: #fff;
+            font-size: 25px;
+            padding: 10px;
+        }
+
+        .active {
+            background-color: #C0CEE3;
+            color: #000;
+        }
+
+        .content, .other, .other2, .other3, .other4, .other5 {
+            width: 100%;
+            background-color: #525252;
+            padding: 20px 30px 30px 30px;
+            box-shadow: 2px 2px 5px #333;
+        }
+
+        .other {
+            display: none;
+        }
+
+        .other2 {
+            display: none;
+        }
+
+        .other3 {
+            display: none;
+        }
+
+        .other4 {
+            display: none;
+        }
+
+        .other5 {
+            display: none;
+        }
+
+        .inp {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            font-size: 20px;
+            border: 2px solid #888;
+            border-bottom: 5px solid #888;
+            background-color: #fff;
+            color: #666;
+        }
+
+            .inp:focus {
+                outline: none;
+                border: 2px solid #555;
+                border-bottom: 5px solid #555;
+            }
+
+        .sub-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: #2873E8;
+            color: #fff;
+            cursor: pointer;
+            border-bottom: 5px solid #444;
+        }
+
+            .sub-btn:focus {
+                outline: none;
+            }
+
+            .sub-btn:active {
+                border: none;
+                margin-top: 5px;
+            }
+
+            .sub-btn:hover {
+                background-color: #52D66A;
+            }
+
+        h2 {
+            text-align: center;
+            padding-bottom: 15px;
+            color: white;
+            font-size: 30px;
+            font-variant: small-caps;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 15px;
+            color: white;
+            font-size: 60px;
+            font-variant: small-caps;
+        }
+    </style>
+</head>
+<body>
+    <!--<div class="bg">
+        <h1>Admin page</h1>
+    </div>-->
+
+
+    <div id="main">
+        <div>
+            <h1 name="header" id="header-id" class="header">U-Jewelries</h1>
+        </div>
+
+        <div id="tab-btn">
+            <a href="#" class="design_store active">Design store</a>
+            <a href="#" class="create_acount">Create account</a>
+            <a href="#" class="create_product">Add product</a>
+            <a href="#" class="make_admin">Make user admin</a>
+            <a href="#" class="update_product">Update product amount</a>
+            <a href="#" class="go_back">Back to the login page</a>
+        </div>
+        <div class="content">
+            <h2>Store designer</h2>
+            <form action="#" method="get" id="design-store">
+                <input id="storeName" type="text" placeholder="New store name" class="inp" required autofocus />
+                <button class="sub-btn" type="button" onclick="changeName()">Change name</button>
+            </form>
+        </div>
+        <div class="other5">
+            <h2>Create account</h2>
+            <form action="#" method="get" id="create-box">
+                <input id="newId" type="number" placeholder="id" class="inp" required autofocus />
+                <input id="newName" type="text" placeholder="Name" class="inp" required autofocus />
+                <input id="newLoginName" type="text" placeholder="Login name" class="inp" required autofocus />
+                <input id="newPassword" type="password" placeholder="Password" class="inp" required autofocus />
+                <input id="newIsManager" type="text" placeholder="Manager account?" class="inp" required autofocus />
+                <button class="sub-btn" type="button" id="createAcc" onclick="CreateAccount()">Create account</button>
+            </form>
+        </div>
+        <div class="other">
+            <h2>Add product</h2>
+            <form action="#" method="get" id="add-box">
+                <input id="newProductName" type="text" placeholder="Name" class="inp" required autofocus />
+                <input id="newPrice" type="number" placeholder="Price" class="inp" required autofocus />
+                <input id="newCost" type="number" placeholder="Cost" class="inp" required autofocus />
+                <input id="newInv" type="number" placeholder="Amount" class="inp" required autofocus />
+                <select id="categories" placeholder="Choose category" class="inp" required autofocus></select>
+                <input id="newIsActive" type="text" placeholder="Is active?" class="inp" required autofocus />
+                <input type="file" id="new_img" class="sub-btn" />
+                <button class="sub-btn" type="button" id="createProd" onclick="CreateProduct()">Create product</button>
+            </form>
+        </div>
+        <div class="other2">
+            <h2>Make user admin</h2>
+            <form action="#" method="get" id="admin-box">
+                <input id="newAdminId" type="number" placeholder="Id" class="inp" required autofocus />
+                <button class="sub-btn" type="button" onclick="AdminMaker()">Update user admin state</button>
+            </form>
+        </div>
+        <div class="other3">
+            <h2>Update product amount</h2>
+            <form action="#" method="get" id="update-box">
+                <input id="ProductToBeUpadtedName" type="text" placeholder="Product name" class="inp" required autofocus />
+                <input id="newAmountToBeAdded" type="number" placeholder="Amount" class="inp" required autofocus />
+                <button class="sub-btn" type="button" onclick="updateAmount()">Update amount</button>
+            </form>
+        </div>
+        <div class="other4">
+            <h2>Back to the login page</h2>
+            <form action="#" method="get" id="back-box">
+                <button class="sub-btn" type="button" onclick="login()">Go</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+
+        $(document).ready(function () {
+            GetCategories();
+            $(".create_acount").click(function () {
+                $(".other").hide();
+                $(".other5").show();
+                $(".other2").hide();
+                $(".other3").hide();
+                $(".other4").hide();
+                $(".content").hide();
+                $(".design_store").removeClass('active');
+                $(".create_acount").addClass('active');
+                $(".create_product").removeClass('active');
+                $(".make_admin").removeClass('active');
+                $(".update_product").removeClass('active');
+                $(".go_back").removeClass('active');
+            });
+            $(".create_product").click(function () {
+                $(".other").show();
+                $(".content").hide();
+                $(".other2").hide();
+                $(".other3").hide();
+                $(".other4").hide();
+                $(".other5").hide();
+                $(".design_store").removeClass('active');
+                $(".create_acount").removeClass('active');
+                $(".create_product").addClass('active');
+                $(".make_admin").removeClass('active');
+                $(".update_product").removeClass('active');
+                $(".go_back").removeClass('active');
+
+            });
+            $(".make_admin").click(function () {
+                $(".other").hide();
+                $(".content").hide();
+                $(".other2").show();
+                $(".other3").hide();
+                $(".other4").hide();
+                $(".other5").hide();
+                $(".design_store").removeClass('active');
+                $(".create_acount").removeClass('active');
+                $(".create_product").removeClass('active');
+                $(".make_admin").addClass('active');
+                $(".update_product").removeClass('active');
+                $(".go_back").removeClass('active');
+            });
+            $(".update_product").click(function () {
+                $(".other").hide();
+                $(".content").hide();
+                $(".other2").hide();
+                $(".other3").show();
+                $(".other4").hide();
+                $(".other5").hide();
+                $(".design_store").removeClass('active');
+                $(".create_acount").removeClass('active');
+                $(".create_product").removeClass('active');
+                $(".make_admin").removeClass('active');
+                $(".update_product").addClass('active');
+                $(".go_back").removeClass('active');
+            });
+            $(".go_back").click(function () {
+                $(".other").hide();
+                $(".content").hide();
+                $(".other2").hide();
+                $(".other3").hide();
+                $(".other4").show();
+                $(".other5").hide();
+                $(".design_store").removeClass('active');
+                $(".create_acount").removeClass('active');
+                $(".create_product").removeClass('active');
+                $(".make_admin").removeClass('active');
+                $(".update_product").removeClass('active');
+                $(".go_back").addClass('active');
+            });
+            $(".design_store").click(function () {
+                $(".other").hide();
+                $(".other5").hide();
+                $(".other2").hide();
+                $(".other3").hide();
+                $(".other4").hide();
+                $(".content").show();
+                $(".create_acount").removeClass('active');
+                $(".create_product").removeClass('active');
+                $(".make_admin").removeClass('active');
+                $(".update_product").removeClass('active');
+                $(".go_back").removeClass('active');
+                $(".design_store").addClass('active');
+            });
+
+            function GetCategories() {
+                $.ajax({
+                    dataType: "json",
+                    url: "api/Products/GetCategories",
+                    contentType: "application/json; charset=utf-8",
+                    type: "GET",
+                    success: function (data) {
+                        if (data != null) {
+                            for (var i = 0; i < data.length; i++) {
+                                $("<option>").html(data[i].category_name).attr({ id: (i + 1) }).appendTo("#categories");
+                            }
+                        }
+                    },
+                    error: function (err) {
+                        alert("Error cant get the categories please refresh the page.");
+                    }
+                });
+            }
+        });
+
+        function updateAmount() {
+            if ($("#ProductToBeUpadtedName").val() !== "") {
+                if ($("#newAmountToBeAdded").val() !== "") {
+                    if (parseInt($("#newAmountToBeAdded").val()) >= 0) {
+                        $.ajax({
+                            dataType: "json",
+                            url: "api/Welcom/CheckProductName/?name=" + $("#ProductToBeUpadtedName").val(),
+                            contentType: "application/json; charset=utf-8",
+                            type: "GET",
+                            success: function (data) {
+                                if (data != null) {
+                                    var param =
+                                    {
+                                        name: $("#ProductToBeUpadtedName").val(),
+                                        amount: $("#newAmountToBeAdded").val()
+                                    }
+
+                                    $.ajax({
+                                        dataType: "json",
+                                        url: "api/Products/UpdateAmount",
+                                        contentType: "application/json; charset=utf-8",
+                                        type: "POST",
+                                        data: JSON.stringify(param),
+                                        success: function (data) {
+                                            alert("Success new amount has been updated!");
+                                        },
+                                        error: function (err) {
+                                            alert("DB Error.");
+                                        }
+                                    });
+                                }
+                                else {
+                                    alert("There is no product with that name, please try again.");
+                                }
+                            },
+                            error: function (err) {
+                                alert("DB Error.");
+                            }
+                        });
+                    }
+                    else {
+                        alert("Amount cant be negative, try again.");
+                    }
+                }
+                else {
+                    alert("Amount cant be empty, please enter Amount.");
+                }
+            }
+            else {
+                alert("Product name cant be empty, please enter Product name.");
+            }
+
+        }
+
+        function saveImage() {
+            let fd = new FormData();
+            fd.append("name", $("#newProductName").val());
+            fd.append("file", $("#new_img")[0].files[0]);
+
+            $.ajax({
+                url: "api/Products/SaveImg",
+                data: fd,
+                contentType: false,
+                processData: false,
+                type: 'PUT',
+                success: function (data) {
+
+                },
+                error: function (e) {
+
+                }
+            });
+        }
+        function CreateProduct() {
+            if ($("#newProductName").val() !== "") {
+                if ($("#newPrice").val() !== "") {
+                    if ($("#newCost").val() !== "") {
+                        if ($("#newInv").val() !== "") {
+                            if (parseInt($("#newInv").val()) >= 0) {
+                                if (($("#newIsActive").val().toLowerCase() == "yes") || ($("#newIsActive").val().toLowerCase() == "no")) {
+                                    if ($("#new_img")[0].files[0] != null) {
+                                        $.ajax({
+                                            dataType: "json",
+                                            url: "api/Welcom/CheckProductName/?name=" + $("#newProductName").val(),
+                                            contentType: "application/json; charset=utf-8",
+                                            type: "GET",
+                                            success: function (data) {
+                                                if (data == null) {
+                                                    var product =
+                                                    {
+                                                        name: $("#newProductName").val(),
+                                                        price: $("#newPrice").val(),
+                                                        cost: $("#newCost").val(),
+                                                        amount: $("#newInv").val(),
+                                                        is_active: $("#newIsActive").val().toLowerCase(),
+                                                        category_id: $('#categories option:selected').attr('id')
+                                                    }
+
+
+                                                    $.ajax({
+                                                        dataType: "json",
+                                                        url: "api/Products/CreateProduct",
+                                                        contentType: "application/json; charset=utf-8",
+                                                        type: "PUT",
+                                                        data: JSON.stringify(product),
+                                                        success: function (data) {
+                                                            saveImage();
+                                                            alert("Success a new product has been created!");
+                                                        },
+                                                        error: function (err) {
+                                                            alert("Error cant create product please try again.");
+                                                        }
+                                                    });
+                                                }
+                                                else {
+                                                    alert("Product name already exist and most be unique, please choose another name.")
+                                                }
+                                            },
+                                            error: function (err) {
+                                                alert("Db Error trying to verify product name.")
+                                            }
+                                        });
+                                    }
+                                    else {
+                                        alert("You have to upload image, choose the default if you dont have one.");
+                                    }
+                                }
+                                else {
+                                    alert("You have to state if the product is active or not (yes or no).");
+                                }
+                            }
+                            else {
+                                alert("Amount cant be negative, try again.");
+                            }
+                        }
+                        else {
+                            alert("Amount cant be empty, please enter the amount of the product.");
+                        }
+                    }
+
+                    else {
+                        alert("Product cost cant be empty, please enter the product cost.");
+
+                    }
+                }
+                else {
+                    alert("Product price cant be empty, please enter the product price.");
+                }
+
+            }
+            else {
+                alert("Product name cant be empty, please enter the product name.");
+
+            }
+
+        }
+
+
+        function CreateAccount() {
+            if ($("#newId").val() !== "") {
+                if ($("#newName").val() !== "") {
+                    if ($("#newLoginName").val() !== "") {
+                        if ($("#newPassword").val() !== "") {
+                            if (($("#newIsManager").val().toLowerCase() == "yes") || ($("#newIsManager").val().toLowerCase() == "no")) {
+
+                                $.ajax({
+                                    dataType: "json",
+                                    url: "api/Welcom/CheckLoginName/?loginName=" + $("#newLoginName").val(),
+                                    contentType: "application/json; charset=utf-8",
+                                    type: "GET",
+                                    success: function (data) {
+                                        if (data == null) {
+                                            $.ajax({
+                                                dataType: "json",
+                                                url: "api/Welcom/CheckId/?id=" + $("#newId").val(),
+                                                contentType: "application/json; charset=utf-8",
+                                                type: "GET",
+                                                success: function (data) {
+                                                    if (data == null) {
+                                                        var costumer =
+                                                        {
+                                                            personal_id: $("#newId").val(),
+                                                            name: $("#newName").val(),
+                                                            login_name: $("#newLoginName").val(),
+                                                            password: $("#newPassword").val(),
+                                                            is_manager: $("#newIsManager").val()
+                                                        }
+
+                                                        $.ajax({
+                                                            dataType: "json",
+                                                            url: "api/Welcom/Create",
+                                                            contentType: "application/json; charset=utf-8",
+                                                            type: "PUT",
+                                                            data: JSON.stringify(costumer),
+                                                            success: function (data) {
+                                                                alert("Success a new account has been created!");
+                                                            },
+                                                            error: function (err) {
+                                                                alert("Error cant create account please try again.");
+                                                            }
+                                                        });
+                                                    }
+                                                    else {
+                                                        alert("Id already exist and most be unique please change it.");
+                                                    }
+                                                },
+                                                error: function (err) {
+                                                    alert("Creating user DB Error.");
+                                                }
+                                            });
+                                        }
+                                        else {
+                                            alert("Login name already exist and most be unique please change it.");
+                                        }
+                                    },
+                                    error: function (err) {
+                                        alert("Getting user details from DB Error.");
+                                    }
+                                });
+                            }
+
+                            else {
+                                alert("You have to state if the product is active or not (yes or no).");
+                            }
+                        }
+                        else {
+                            alert("Password cant be empty, please enter password.");
+                        }
+
+                    }
+                    else {
+                        alert("Login name cant be empty, please enter login name.");
+                    }
+                }
+
+                else {
+                    alert("Name cant be empty, please enter name.");
+                }
+
+            }
+            else {
+                alert("Personal id cant be empty, please enter Personal id.");
+            }
+
+        }
+
+
+
+
+        function AdminMaker() {
+            if ($("#newAdminId").val() !== "") {
+                $.ajax({
+                    dataType: "json",
+                    url: "api/Welcom/CheckId/?id=" + $("#newAdminId").val(),
+                    contentType: "application/json; charset=utf-8",
+                    type: "GET",
+                    success: function (data) {
+                        if (data == null) {
+                            alert("Cant find id please check it and try again.");
+                        }
+                        else {
+                            var costumer =
+                            {
+                                personal_id: $("#newAdminId").val()
+                            }
+
+                            $.ajax({
+                                dataType: "json",
+                                url: "api/Welcom/MakeAdmin",
+                                contentType: "application/json; charset=utf-8",
+                                type: "POST",
+                                data: JSON.stringify(costumer),
+                                success: function (data) {
+                                    alert("Success the account is now admin!");
+                                },
+                                error: function (err) {
+                                    alert("Error cant update the admin state please try again.");
+                                }
+                            });
+                        }
+                    },
+                    error: function (err) {
+                        alert("Making admin DB Error.");
+                    }
+                });
+            }
+            else {
+                alert("Id cant be empty, please enter id.")
+            }
+
+        }
+
+        function login() {
+            document.location.href = "WelcomPage.html";
+        }
+
+        function GetShopName() {
+            $.ajax({
+                dataType: "json",
+                url: "api/design/GetShopName",
+                contentType: "application/json; charset=utf-8",
+                type: "GET",
+                success: function (data) {
+                    if (data != null) {
+                        $("#header-id").text(data);
+                    }
+                    else {
+                        alert("Cant load shop information.");
+                    }
+                },
+                error: function (err) {
+                    alert("Error cload shop information please refresh the page.");
+                }
+            });
+        }
+
+        function changeName() {
+            var shop =
+            {
+                name: $("#storeName").val()
+            };
+            $.ajax({
+                dataType: "json",
+                url: "api/design/UpdateStoreName",
+                contentType: "application/json; charset=utf-8",
+                type: "PUT",
+                data: JSON.stringify(shop),
+                success: function (data) {
+                    if (data != null) {
+                        $("#header-id").text(data);
+                        alert("Success new name has been set!");
+                    }
+                    else {
+                        alert("Could not change store name.")
+                    }
+                },
+                error: function (err) {
+                    alert("DB Error.");
+                }
+            });
+        }
+        GetShopName();
+    </script>
+</body>
+</html>
