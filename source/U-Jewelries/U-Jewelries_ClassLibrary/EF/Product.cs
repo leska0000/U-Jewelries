@@ -20,16 +20,16 @@ namespace U_Jewelries_ClassLibrary.EF
             this.Purchases = new HashSet<Purchase>();
         }
     
-        public int Id { get; set; }
         public string name { get; set; }
-        public double price { get; set; }
+        public string id { get; set; }
+        public Nullable<double> price { get; set; }
         public Nullable<double> cost { get; set; }
-        public int amount { get; set; }
+        public Nullable<int> inv { get; set; }
+        public Nullable<int> supplier_id { get; set; }
+        public string category { get; set; }
         public Nullable<bool> is_active { get; set; }
-        public Nullable<int> category_id { get; set; }
-        public string img_url { get; set; }
     
-        public virtual Category Category { get; set; }
+        public virtual Supplier Supplier { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Purchase> Purchases { get; set; }
     }

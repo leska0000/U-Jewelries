@@ -65,64 +65,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EF\Category.cs">
-      <DependentUpon>UjewelriesEFmodel.tt</DependentUpon>
-    </Compile>
     <Compile Include="EF\Costumer.cs">
-      <DependentUpon>UjewelriesEFmodel.tt</DependentUpon>
+      <DependentUpon>UjewelriesDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EF\Product.cs">
-      <DependentUpon>UjewelriesEFmodel.tt</DependentUpon>
+      <DependentUpon>UjewelriesDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EF\Purchase.cs">
-      <DependentUpon>UjewelriesEFmodel.tt</DependentUpon>
+      <DependentUpon>UjewelriesDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF\UjewelriesEFmodel.Context.cs">
+    <Compile Include="EF\Supplier.cs">
+      <DependentUpon>UjewelriesDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\UjewelriesDBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UjewelriesEFmodel.Context.tt</DependentUpon>
+      <DependentUpon>UjewelriesDBModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF\UjewelriesEFmodel.cs">
+    <Compile Include="EF\UjewelriesDBModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UjewelriesEFmodel.tt</DependentUpon>
+      <DependentUpon>UjewelriesDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF\UjewelriesEFmodel.Designer.cs">
+    <Compile Include="EF\UjewelriesDBModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UjewelriesEFmodel.edmx</DependentUpon>
+      <DependentUpon>UjewelriesDBModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="EF\UjewelriesEFmodel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>UjewelriesEFmodel.Context.cs</LastGenOutput>
-      <DependentUpon>UjewelriesEFmodel.edmx</DependentUpon>
-    </Content>
-    <Content Include="EF\UjewelriesEFmodel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UjewelriesEFmodel.edmx</DependentUpon>
-      <LastGenOutput>UjewelriesEFmodel.cs</LastGenOutput>
-    </Content>
-    <Content Include="Ujewelries.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Ujewelries_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Ujewelries.mdf</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="EF\UjewelriesEFmodel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>UjewelriesEFmodel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
+    <Compile Include="Servecses\UjewelriesService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="EF\UjewelriesEFmodel.edmx.diagram">
-      <DependentUpon>UjewelriesEFmodel.edmx</DependentUpon>
+    <EntityDeploy Include="EF\UjewelriesDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UjewelriesDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EF\UjewelriesDBModel.edmx.diagram">
+      <DependentUpon>UjewelriesDBModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -140,6 +120,18 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EF\UjewelriesDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UjewelriesDBModel.edmx</DependentUpon>
+      <LastGenOutput>UjewelriesDBModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EF\UjewelriesDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UjewelriesDBModel.edmx</DependentUpon>
+      <LastGenOutput>UjewelriesDBModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

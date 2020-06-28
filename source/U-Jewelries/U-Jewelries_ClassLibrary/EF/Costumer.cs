@@ -20,10 +20,9 @@ namespace U_Jewelries_ClassLibrary.EF
             this.Purchases = new HashSet<Purchase>();
         }
     
-        public int auto_Id { get; set; }
-        public int personal_id { get; set; }
+        public int id { get; set; }
         public string name { get; set; }
-        public string login_name { get; set; }
+        public Nullable<double> avg_grade { get; set; }
         public string password { get; set; }
         public Nullable<bool> is_manager { get; set; }
     

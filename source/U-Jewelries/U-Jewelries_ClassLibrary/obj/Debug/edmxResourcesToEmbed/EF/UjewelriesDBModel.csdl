@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UJModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Costumer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="avg_grade" Type="Double" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="is_manager" Type="Boolean" />
+    <NavigationProperty Name="Purchases" Relationship="Self.FK__Purchase__studen__060DEAE8" FromRole="Costumer" ToRole="Purchase" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="id" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="price" Type="Double" />
+    <Property Name="cost" Type="Double" />
+    <Property Name="inv" Type="Int32" />
+    <Property Name="supplier_id" Type="Int32" />
+    <Property Name="category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="is_active" Type="Boolean" />
+    <NavigationProperty Name="Supplier" Relationship="Self.FK__Products__suppli__03317E3D" FromRole="Products" ToRole="Suppliers" />
+    <NavigationProperty Name="Purchases" Relationship="Self.FK__Purchase__number__07020F21" FromRole="Products" ToRole="Purchase" />
+  </EntityType>
+  <EntityType Name="Purchase">
+    <Key>
+      <PropertyRef Name="purchase_id" />
+    </Key>
+    <Property Name="costumer_id" Type="Int32" />
+    <Property Name="product_id" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
+    <Property Name="purchase_date" Type="DateTime" Precision="3" />
+    <Property Name="amount" Type="Int32" />
+    <Property Name="purchase_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Costumer" Relationship="Self.FK__Purchase__studen__060DEAE8" FromRole="Purchase" ToRole="Costumer" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__Purchase__number__07020F21" FromRole="Purchase" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="supplier_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="supplier_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Products" Relationship="Self.FK__Products__suppli__03317E3D" FromRole="Suppliers" ToRole="Products" />
+  </EntityType>
+  <Association Name="FK__Purchase__studen__060DEAE8">
+    <End Role="Costumer" Type="Self.Costumer" Multiplicity="0..1" />
+    <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Costumer">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Purchase">
+        <PropertyRef Name="costumer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Products__suppli__03317E3D">
+    <End Role="Suppliers" Type="Self.Supplier" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Suppliers">
+        <PropertyRef Name="supplier_id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="supplier_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Purchase__number__07020F21">
+    <End Role="Products" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Purchase">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="UjewelriesDBContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Costumers" EntityType="Self.Costumer" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="Purchases" EntityType="Self.Purchase" />
+    <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+    <AssociationSet Name="FK__Purchase__studen__060DEAE8" Association="Self.FK__Purchase__studen__060DEAE8">
+      <End Role="Costumer" EntitySet="Costumers" />
+      <End Role="Purchase" EntitySet="Purchases" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Products__suppli__03317E3D" Association="Self.FK__Products__suppli__03317E3D">
+      <End Role="Suppliers" EntitySet="Suppliers" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Purchase__number__07020F21" Association="Self.FK__Purchase__number__07020F21">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Purchase" EntitySet="Purchases" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
