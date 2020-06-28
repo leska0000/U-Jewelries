@@ -1,0 +1,12 @@
+C:\HubC\source\U-Jewelries\U-Jewelries_ClassLibrary\bin\Debug\U-Jewelries_ClassLibrary.dll.config
+C:\HubC\source\U-Jewelries\U-Jewelries_ClassLibrary\bin\Debug\U-Jewelries_ClassLibrary.dll
+C:\HubC\source\U-Jewelries\U-Jewelries_ClassLibrary\bin\Debug\U-Jewelries_ClassLibrary.pdb
+C:\HubC\source\U-Jewelries\U-Jewelries_ClassLibrary\bin\Debug\EntityFramework.dll
+C:\HubC\source\U-Jewelries\U-Jewelries_ClassLibrary\bin\Debug\EntityFramework.SqlServer.dll
+C:\HubC\source\U-Jewelries\U-Jewelries_ClassLibrary\bin\Debug\EntityFramework.xml
+C:\HubC\source\U-Jewelries\U-Jewelries_ClassLibrary\bin\Debug\EntityFramework.SqlServer.xml
+C:\HubC\source\U-Jewelries\U-Jewelries_ClassLibrary\obj\Debug\U-Jewelries_ClassLibrary.csproj.CoreCompileInputs.cache
+C:\HubC\source\U-Jewelries\U-Jewelries_ClassLibrary\obj\Debug\U-Jewelries_ClassLibrary.csproj.CopyComplete
+C:\HubC\source\U-Jewelries\U-Jewelries_ClassLibrary\obj\Debug\U-Jewelries_ClassLibrary.dll
+C:\HubC\source\U-Jewelries\U-Jewelries_ClassLibrary\obj\Debug\U-Jewelries_ClassLibrary.pdb
+C:\HubC\source\U-Jewelries\U-Jewelries_ClassLibrary\obj\Debug\U-Jewelries_ClassLibrary.csprojAssemblyReference.cache

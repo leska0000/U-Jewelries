@@ -14,12 +14,11 @@ namespace U_Jewelries_ClassLibrary.EF
     
     public partial class Purchase
     {
-        public int Id { get; set; }
-        public int product_id { get; set; }
-        public int costumer_id { get; set; }
-        public Nullable<double> amount { get; set; }
-        public string costumer_person { get; set; }
+        public Nullable<int> costumer_id { get; set; }
+        public string product_id { get; set; }
         public Nullable<System.DateTime> purchase_date { get; set; }
+        public Nullable<int> amount { get; set; }
+        public int purchase_id { get; set; }
     
         public virtual Costumer Costumer { get; set; }
         public virtual Product Product { get; set; }
