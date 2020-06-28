@@ -23,5 +23,11 @@ namespace U_Jewelries_ClassLibrary.Servecses
 
             return db.Costumers.ToList();
         }
+
+        public static List<Product> AllProducts()
+        {
+            UjewelriesDBContext db = new UjewelriesDBContext();
+            return db.Products.ToList();
+        }
     }
 }

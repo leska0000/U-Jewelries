@@ -21,6 +21,11 @@ namespace U_Jewelries_ConsoleApp
             {
                 Console.WriteLine("name: {0}  ID: {1}", temp.id, temp.name);
             }
+            Console.WriteLine("\nProducts\n");
+            foreach (var temp in UjewelriesService.AllProducts())
+            {
+                Console.WriteLine("name: {0}  ID: {1}", temp.id, temp.name);
+            }
         }
     }
 }
