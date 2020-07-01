@@ -264,6 +264,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Client\AdminPage.html" />
+    <Content Include="Client\ProductsPage.html" />
+    <Content Include="Client\ThanksPage.html" />
+    <Content Include="Client\WelcomPage.html" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -418,7 +422,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Client\" />
+    <Folder Include="Client\pictures\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
