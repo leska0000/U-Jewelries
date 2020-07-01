@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace Ujewelries_API.Areas.HelpPage.ModelDescriptions
