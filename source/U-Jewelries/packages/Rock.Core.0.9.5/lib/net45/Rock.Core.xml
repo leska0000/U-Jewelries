@@ -1,0 +1,1685 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Rock.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Rock.ApplicationId">
+            <summary>
+            Provides access to the ID of the current application.
+            </summary>
+        </member>
+        <member name="P:Rock.ApplicationId.Current">
+            <summary>
+            Gets the ID of the current application.
+            </summary>
+        </member>
+        <member name="T:Rock.Collections.AddSafelyExtension">
+            <summary>
+            Provides a <see cref="M:Rock.Collections.AddSafelyExtension.AddSafely``2(System.Collections.Generic.Dictionary{``0,``1},``0,``1)"/> extension method.
+            </summary>
+        </member>
+        <member name="M:Rock.Collections.AddSafelyExtension.AddSafely``2(System.Collections.Generic.Dictionary{``0,``1},``0,``1)">
+            <summary>
+            Adds the specified key and value to the dictionary if and only if the
+            key is not currently present.
+            </summary>
+            <typeparam name="TKey">The type of the key.</typeparam>
+            <typeparam name="TValue">The type of the value.</typeparam>
+            <param name="source">The source <see cref="T:System.Collections.Generic.Dictionary`2"/>.</param>
+            <param name="key">The key of the element to add.</param>
+            <param name="value">The value of the element to add. The value can be null for reference types.</param>
+        </member>
+        <member name="T:Rock.Collections.ForEachExtension">
+            <summary>
+            Provides a <see cref="M:Rock.Collections.ForEachExtension.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})"/> extension method.
+            </summary>
+        </member>
+        <member name="M:Rock.Collections.ForEachExtension.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+             <summary>
+             Performs the specified action on each element of the <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+             </summary>
+             <typeparam name="TSource">The type of the elements of source.</typeparam>
+             <param name="source">
+             An <see cref="T:System.Collections.Generic.IEnumerable`1"/> that contains the elements to perform an action on.
+             </param>
+             <param name="action">
+             The <see cref="T:System.Action`1"/> delegate to perform on each element of the <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+            </param>
+        </member>
+        <member name="T:Rock.Collections.SerializableDictionary`2">
+            <summary>
+            Provides a serializable dictionary that supports native XML serialization since by default,
+            anything implementing IDictionary cannot be serialized.
+            </summary>
+            <typeparam name="TKey">The type of the key.</typeparam>
+            <typeparam name="TValue">The type of the value.</typeparam>
+        </member>
+        <member name="M:Rock.Collections.SerializableDictionary`2.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rock.Collections.SerializableDictionary`2"/> class.
+            </summary>
+        </member>
+        <member name="M:Rock.Collections.SerializableDictionary`2.#ctor(System.Xml.Serialization.XmlSerializer,System.Xml.Serialization.XmlSerializer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rock.Collections.SerializableDictionary`2"/> class.
+            </summary>
+            <param name="keySerializer">The serializer to use when serializing .</param>
+            <param name="valueSerializer">The value serializer.</param>
+        </member>
+        <member name="M:Rock.Collections.SerializableDictionary`2.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rock.Collections.SerializableDictionary`2"/> class.
+            </summary>
+        </member>
+        <member name="T:Rock.Cryptography.HashType">
+            <summary>
+            Simple Enum used with the String Extension Method ToHash()
+            </summary>
+        </member>
+        <member name="F:Rock.Cryptography.HashType.MD5">
+            <summary>
+            MD5 Hash Type
+            </summary>
+        </member>
+        <member name="F:Rock.Cryptography.HashType.SHA1">
+            <summary>
+            SHA1 Hash Type
+            </summary>
+        </member>
+        <member name="F:Rock.Cryptography.HashType.SHA256">
+            <summary>
+            SHA256 Hash Type
+            </summary>
+        </member>
+        <member name="F:Rock.Cryptography.HashType.SHA512">
+            <summary>
+            SHA512 Hash Type
+            </summary>
+        </member>
+        <member name="T:Rock.Cryptography.HashTypeExtensions">
+            <summary>
+            HashType extensions
+            </summary>
+        </member>
+        <member name="M:Rock.Cryptography.HashTypeExtensions.ToHash(System.String,Rock.Cryptography.HashType)">
+            <summary>
+            Converts a string to a Hash of the specified type.
+            </summary>
+            <param name="value">The string to be hashed.</param>
+            <param name="hashType">Type of the hash.</param>
+            <returns>The hash value</returns>
+        </member>
+        <member name="M:Rock.Cryptography.HashTypeExtensions.ToHash(System.Byte[],Rock.Cryptography.HashType)">
+            <summary>
+            Computes the hash value for the specified byte array.
+            </summary>
+            <param name="hashType">The type of algorithm to use when computing the hash.</param>
+            <param name="data">The input to compute the hash code for.</param>
+            <returns>The computed hash code.</returns>
+        </member>
+        <member name="M:Rock.Cryptography.HashTypeExtensions.ComputeHash(Rock.Cryptography.HashType,System.String,System.Text.Encoding)">
+            <summary>
+            Computes the hash value for the specified string.
+            </summary>
+            <param name="hashType">The type of algorithm to use when computing the hash.</param>
+            <param name="value">The input to compute the hash code for.</param>
+            <param name="encoding">
+            The encoding to use when retrieving the binary representation of <paramref name="value"/>.
+            If null or not supplied, then <see cref="P:System.Text.Encoding.UTF8"/> is used instead.
+            </param>
+            <returns>The computed hash code.</returns>
+        </member>
+        <member name="M:Rock.Cryptography.HashTypeExtensions.ComputeHash(Rock.Cryptography.HashType,System.IO.Stream)">
+            <summary>
+            Computes the hash value for the specified <see cref="T:System.IO.Stream"/> object.
+            </summary>
+            <param name="hashType">The type of algorithm to use when computing the hash.</param>
+            <param name="inputStream">The input to compute the hash code for.</param>
+            <returns>The computed hash code.</returns>
+        </member>
+        <member name="M:Rock.Cryptography.HashTypeExtensions.ComputeHash(Rock.Cryptography.HashType,System.IO.Stream,System.Boolean)">
+            <summary>
+            Computes the hash value for the specified <see cref="T:System.IO.Stream"/> object.
+            </summary>
+            <param name="hashType">The type of algorithm to use when computing the hash.</param>
+            <param name="inputStream">The input to compute the hash code for.</param>
+            <param name="closeStream">Whether to close the stream after calculating the hash.</param>
+            <returns>The computed hash code.</returns>
+        </member>
+        <member name="M:Rock.Cryptography.HashTypeExtensions.ComputeHash(Rock.Cryptography.HashType,System.Byte[])">
+            <summary>
+            Computes the hash value for the specified byte array.
+            </summary>
+            <param name="hashType">The type of algorithm to use when computing the hash.</param>
+            <param name="buffer">The input to compute the hash code for.</param>
+            <returns>The computed hash code.</returns>
+        </member>
+        <member name="T:Rock.DefaultApplicationIdProvider">
+            <summary>
+            The default implementation of <see cref="T:Rock.IApplicationIdProvider"/>. Attempts to get the
+            value from an instance of <see cref="T:Rock.AppSettingsApplicationIdProvider"/>. If that fails,
+            gets the value from an instance of <see cref="T:Rock.EntryAssemblyApplicationIdProvider"/>.
+            </summary>
+        </member>
+        <member name="T:Rock.IApplicationIdProvider">
+            <summary>
+            Represents information about an application.
+            </summary>
+        </member>
+        <member name="M:Rock.IApplicationIdProvider.GetApplicationId">
+            <summary>
+            Gets the ID of the current application.
+            </summary>
+        </member>
+        <member name="M:Rock.DefaultApplicationIdProvider.GetApplicationId">
+            <summary>
+            Gets the ID of the current application.
+            </summary>
+        </member>
+        <member name="T:Rock.AppSettingsApplicationIdProvider">
+            <summary>
+            An implementation of <see cref="T:Rock.IApplicationIdProvider"/> that uses a config
+            file's appSettings section.
+            </summary>
+        </member>
+        <member name="M:Rock.AppSettingsApplicationIdProvider.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rock.AppSettingsApplicationIdProvider"/> class.
+            The key of the application ID setting will be "Rock.ApplicationId.Current".
+            </summary>
+        </member>
+        <member name="M:Rock.AppSettingsApplicationIdProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rock.AppSettingsApplicationIdProvider"/> class.
+            </summary>
+            <param name="applicationIdKey">The key of the application ID setting.</param>
+        </member>
+        <member name="M:Rock.AppSettingsApplicationIdProvider.GetApplicationId">
+            <summary>
+            Gets the ID of the current application.
+            </summary>
+        </member>
+        <member name="T:Rock.Configuration.InvalidConfigurationException">
+            <summary>
+            The exception that is thrown when an invalid configuration is encountered.
+            </summary>
+        </member>
+        <member name="M:Rock.Configuration.InvalidConfigurationException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rock.Configuration.InvalidConfigurationException"/> class.
+            </summary>
+        </member>
+        <member name="M:Rock.Configuration.InvalidConfigurationException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rock.Configuration.InvalidConfigurationException"/> class.
+            </summary>
+            <param name="message">A message describing why this <see cref="T:Rock.Configuration.InvalidConfigurationException"/> exception was thrown.</param>
+            <param name="documentFragment">The xml fragment string that caused this <see cref="T:Rock.Configuration.InvalidConfigurationException"/> to be thrown.</param>
+        </member>
+        <member name="M:Rock.Configuration.InvalidConfigurationException.#ctor(System.String,System.Exception,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rock.Configuration.InvalidConfigurationException"/> class.
+            </summary>
+            <param name="message">A message describing why this <see cref="T:Rock.Configuration.InvalidConfigurationException"/> exception was thrown.</param>
+            <param name="inner">The inner exception that caused this <see cref="T:Rock.Configuration.InvalidConfigurationException"/> to be thrown, if any.</param>
+            <param name="documentFragment">The xml fragment string that caused this <see cref="T:Rock.Configuration.InvalidConfigurationException"/> to be thrown.</param>
+        </member>
+        <member name="M:Rock.Configuration.InvalidConfigurationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rock.Configuration.InvalidConfigurationException"/> class.
+            </summary>
+            <param name="info">The object that holds the information to deserialize.</param>
+            <param name="context">Contextual information about the source or destination.</param>
+        </member>
+        <member name="P:Rock.Configuration.InvalidConfigurationException.DocumentFragment">
+            <summary>
+            Gets the document fragment that makes up a configuration section.
+            </summary>
+        </member>
+        <member name="T:Rock.Configuration.XmlSerializerSectionHandler">
+            <summary>
+            A section handler that creates an instance of a type based
+            on an attribute named "type" defined in a section element 
+            from a *.config file, using the an instance of
+            <see cref="T:System.Xml.Serialization.XmlSerializer"/> to deserialize the element.
+            </summary>
+        </member>
+        <member name="M:Rock.Configuration.XmlSerializerSectionHandler.Deserialize(System.Xml.XmlNode,System.Type)">
+            <summary>
+            Deserialize the configuration object that will be returned by the
+            <see cref="M:Rock.Configuration.XmlSerializerSectionHandler.Create(System.Object,System.Object,System.Xml.XmlNode)"/> method.
+            </summary>
+            <param name="section">An xml node that represents configuration object in the *.config file.</param>
+            <param name="configType">The type of the object to be returned by the <see cref="M:Rock.Configuration.XmlSerializerSectionHandler.Create(System.Object,System.Object,System.Xml.XmlNode)"/> method.</param>
+            <returns>The deserialized object.</returns>
+        </member>
+        <member name="M:Rock.Configuration.XmlSerializerSectionHandler.GetConfigType(System.Xml.XmlNode)">
+            <summary>
+            Get the type of the configuration object that will be returned by the
+            <see cref="M:Rock.Configuration.XmlSerializerSectionHandler.Create(System.Object,System.Object,System.Xml.XmlNode)"/> method.
+            </summary>
+            <param name="section">An xml node that represents configuration object in the *.config file.</param>
+            <returns>The type of the configuration object that will be returned by the <see cref="M:Rock.Configuration.XmlSerializerSectionHandler.Create(System.Object,System.Object,System.Xml.XmlNode)"/> method.</returns>
+        </member>
+        <member name="T:Rock.Configuration.XmlSerializerSectionHandler`1">
+            <summary>
+            A section handler that creates an instance of the 
+            <typeparamref name="TConfiguration"/> type, using the an instance of
+            <see cref="T:System.Xml.Serialization.XmlSerializer"/> to deserialize the element.
+            </summary>
+        </member>
+        <member name="M:Rock.Configuration.XmlSerializerSectionHandler`1.GetConfigType(System.Xml.XmlNode)">
+            <summary>
+            Get the type of the configuration object that will be returned by the
+            <see cref="M:Rock.Configuration.XmlSerializerSectionHandler.Create(System.Object,System.Object,System.Xml.XmlNode)"/> method.
+            </summary>
+            <param name="section">An xml node that represents configuration object in the *.config file.</param>
+            <returns>The type of the configuration object that will be returned by the <see cref="M:Rock.Configuration.XmlSerializerSectionHandler.Create(System.Object,System.Object,System.Xml.XmlNode)"/> method.</returns>
+        </member>
+        <member name="T:Rock.Conversion.IConvertsTo`1">
+            <summary>
+            Provides a mechanism for converting an <see cref="T:System.Object"/> to a target type, <typeparamref name="TTarget"/>.
+            </summary>
+            <typeparam name="TTarget">The type to be converted to.</typeparam>
+        </member>
+        <member name="M:Rock.Conversion.IConvertsTo`1.Convert(System.Object)">
+            <summary>
+            Convert the <see cref="T:System.Object"/> to type <typeparamref name="TTarget"/>. An exception may be thrown if 
+            <paramref name="obj"/> is not compatible with type <typeparamref name="TTarget"/>.
+            </summary>
+            <param name="obj">An object to convert.</param>
+            <returns>
+            An instance of <typeparamref name="TTarget"/> that represents the <paramref name="obj"/> parameter.
+            </returns>
+        </member>
+        <member name="T:Rock.DateTimeTruncateExtension">
+            <summary>
+            Defines a <see cref="M:Rock.DateTimeTruncateExtension.Truncate(System.DateTime,Rock.TimeSection)"/> extension method for the <see cref="T:System.DateTime"/> struct.
+            </summary>
+        </member>
+        <member name="M:Rock.DateTimeTruncateExtension.Truncate(System.DateTime,Rock.TimeSection)">
+            <summary>
+            Truncates the indicated time section to truncate. Useful when trying to remove the millisecond part of a date time. 
+            </summary>
+            <param name="dateTime">The <see cref="T:System.DateTime"/> to truncate.</param>
+            <param name="timeSectionToTruncate">A <see cref="T:Rock.TimeSection"/> that defines which component of the DateTime will be truncated.</param>
+            <returns>A truncated <see cref="T:System.DateTime"/>.</returns>
+        </member>
+        <member name="M:Rock.EnumGetDescriptionExtension.GetDescription(System.Enum)">
+            <summary>
+            Gets the description of the enumeration value.
+            </summary>
+            <param name="enumValue">The enumeration value.</param>
+            <returns>The description of the enumeration value, if provided. Else, the result of calling <see cref="M:System.Object.ToString"/> on the value.</returns>
+        </member>
+        <member name="T:Rock.TimeSection">
+            <summary>
+            Defines time sections that can be truncated from a DateTime.
+            </summary>
+        </member>
+        <member name="F:Rock.TimeSection.Millisecond">
+            <summary>
+            Indicates that the millisecond component of the DateTime will be truncated.
+            </summary>
+        </member>
+        <member name="F:Rock.TimeSection.Second">
+            <summary>
+            Indicates that the second component of the DateTime will be truncated.
+            </summary>
+        </member>
+        <member name="F:Rock.TimeSection.Minute">
+            <summary>
+            Indicates that the minute component of the DateTime will be truncated.
+            </summary>
+        </member>
+        <member name="F:Rock.TimeSection.Hour">
+            <summary>
+            Indicates that the hour component of the DateTime will be truncated.
+            </summary>
+        </member>
+        <member name="M:Rock.ToUnixTimestampExtension.ToUnixTimestamp(System.DateTime)">
+            <summary>
+            Creates a unix timestamp from the given DateTime
+            </summary>
+            <param name="value">The DateTime to convert.</param>
+            <returns>A Unix Timestamp representation of the given DateTime</returns>
+        </member>
+        <member name="T:Rock.Reflection.GetConstructorFuncExtension">
+            <summary>
+            Provides extension methods for obtaining optimized reflection method
+            for invoking a type's default constructor.
+            </summary>
+        </member>
+        <member name="M:Rock.Reflection.GetConstructorFuncExtension.GetConstructorFunc(System.Type)">
+            <summary>
+            Gets a function with a return type of <see cref="T:System.Object"/> that returns
+            a new instance of <paramref name="type"/>.
+            </summary>
+            <param name="type">The type of object to create.</param>
+            <returns>
+            A function with a return type of <see cref="T:System.Object"/> that returns
+            a new instance of <paramref name="type"/>.
+            </returns>
+        </member>
+        <member name="M:Rock.Reflection.GetConstructorFuncExtension.GetConstructorFunc``1(System.Type)">
+            <summary>
+            Gets a function with a return type of <typeparamref name="T"/>
+            that returns a new instance of <paramref name="type"/>.
+            </summary>
+            <typeparam name="T">The return type of the resulting function.</typeparam>
+            <param name="type">The type of object to create.</param>
+            <returns>
+            A function with a return type of <typeparamref name="T"/>
+            that returns a new instance of <paramref name="type"/>.
+            </returns>
+        </member>
+        <member name="T:Rock.Reflection.GetdActionExtension">
+            <summary>
+            Provides extension methods on a PropertyInfo to get optimized reflection methods.
+            </summary>
+        </member>
+        <member name="M:Rock.Reflection.GetdActionExtension.GetSetAction(System.Reflection.PropertyInfo)">
+            <summary>
+            Gets an <see cref="T:System.Action`2"/> with generic arguments of type
+            <see cref="T:System.Object"/> and <see cref="T:System.Object"/> that, when invoked, sets the value
+            of the property represented by <paramref name="propertyInfo"/>.
+            </summary>
+            <param name="propertyInfo">
+            The <see cref="T:System.Reflection.PropertyInfo"/> that represents the property whose value 
+            is set by the return function.
+            </param>
+            <returns>
+            An <see cref="T:System.Action`2"/> with generic arguments of types <see cref="T:System.Object"/>
+            and <see cref="T:System.Object"/> that, when invoked, returns the value of the
+            property represented by <paramref name="propertyInfo"/>.
+            </returns>
+        </member>
+        <member name="M:Rock.Reflection.GetdActionExtension.GetSetAction``2(System.Reflection.PropertyInfo)">
+            <summary>
+            Gets an <see cref="T:System.Action`2"/> that, when invoked, sets the value
+            of the property represented by <paramref name="propertyInfo"/>.
+            </summary>
+            <param name="propertyInfo">
+            The <see cref="T:System.Reflection.PropertyInfo"/> that represents the property whose value 
+            is set when the return action is invoked.
+            </param>
+            <typeparam name="TInstance">
+            The type of the instance parameter of the resulting <see cref="T:System.Action`2"/>.
+            </typeparam>
+            <typeparam name="TProperty">
+            The type of the value parameter of the resulting <see cref="T:System.Action`2"/>.
+            </typeparam>
+            <returns>
+            An <see cref="T:System.Action`2"/> that, when invoked, sets the value
+            of the property represented by <paramref name="propertyInfo"/>.
+            </returns>
+        </member>
+        <member name="T:Rock.Reflection.GetTypesSafelyExtension">
+            <summary>
+            Provides a <see cref="M:Rock.Reflection.GetTypesSafelyExtension.GetTypesSafely(System.Reflection.Assembly)"/> extension method.
+            </summary>
+        </member>
+        <member name="M:Rock.Reflection.GetTypesSafelyExtension.GetTypesSafely(System.Reflection.Assembly)">
+            <summary>
+            Gets the types defined in the source assembly safely.
+            </summary>
+            <param name="assembly">The assembly to get types from.</param>
+            <returns>
+            A collection containing all the types that are defined (and successfully
+            loaded) from the given assembly.
+            </returns>
+            <remarks>
+            It is possible for a <see cref="T:System.Reflection.ReflectionTypeLoadException"/> to be thrown 
+            when calling the <see cref="M:System.Reflection.Assembly.GetTypes"/> method. This extension
+            method calls that method and catches that exception, returning the types that 
+            did successfully load from the assembly.
+            </remarks>
+        </member>
+        <member name="M:Rock.Reflection.IsDefinedInThisAssemblyExtension.IsDefinedInThisAssembly(System.Reflection.MemberInfo)">
+            <summary>
+            Determines whether the given <see cref="T:System.Reflection.MemberInfo"/> is defined in the
+            calling assembly. 
+            </summary>
+            <param name="member">The member.</param>
+            <returns>
+            True, if the member is defined in this assembly. Else false, if the member
+            is defined in another assembly.
+            </returns>
+        </member>
+        <member name="M:Rock.Rock.StaticDependencyInjection.CompositionRootBase.Bootstrap">
+            <summary>
+            Import the types for this library by calling one of the import methods:
+            <see cref="M:Rock.Rock.StaticDependencyInjection.CompositionRootBase.ImportSingle``1(System.Action{``0},System.String,Rock.Rock.StaticDependencyInjection.ImportOptions)"/>, <see cref="M:Rock.Rock.StaticDependencyInjection.CompositionRootBase.ImportSingle``2(System.Action{``0},System.Func{``1,``0},System.String,Rock.Rock.StaticDependencyInjection.ImportOptions)"/>,
+            <see cref="M:Rock.Rock.StaticDependencyInjection.CompositionRootBase.ImportFirst``1(System.Action{``0},System.String,Rock.Rock.StaticDependencyInjection.ImportOptions)"/>, <see cref="M:Rock.Rock.StaticDependencyInjection.CompositionRootBase.ImportFirst``2(System.Action{``0},System.Func{``1,``0},System.String,Rock.Rock.StaticDependencyInjection.ImportOptions)"/>,
+            <see cref="M:Rock.Rock.StaticDependencyInjection.CompositionRootBase.ImportMultiple``1(System.Action{System.Collections.Generic.IEnumerable{``0}},System.String,Rock.Rock.StaticDependencyInjection.ImportOptions)"/>, or <see cref="M:Rock.Rock.StaticDependencyInjection.CompositionRootBase.ImportMultiple``2(System.Action{System.Collections.Generic.IEnumerable{``0}},System.Func{``1,``0},System.String,Rock.Rock.StaticDependencyInjection.ImportOptions)"/>.
+            </summary>
+        </member>
+        <member name="M:Rock.Rock.StaticDependencyInjection.CompositionRootBase.GetExportInfos(System.Type)">
+            <summary>
+            Return a collection of metadata objects that describe the export operations for a type.
+            </summary>
+            <param name="type">The type to get export metadata.</param>
+            <returns>A collection of metadata objects that describe export operations.</returns>
+        </member>
+        <member name="M:Rock.Rock.StaticDependencyInjection.CompositionRootBase.GetDefaultImportOptions">
+            <summary>
+            Return an object that defines various options.
+            </summary>
+        </member>
+        <member name="M:Rock.Rock.StaticDependencyInjection.CompositionRootBase.ImportSingle``1(System.Action{``0},System.String,Rock.Rock.StaticDependencyInjection.ImportOptions)">
+            <summary>
+            Imports the type specified by <typeparamref name="TTargetType"/>. When a single
+            class with a public parameterless constructor is found that implements or
+            inherits from <typeparamref name="TTargetType"/>, then an instance of that class 
+            will be created and passed to the <paramref name="importAction"/> parameter callback.
+            </summary>
+            <typeparam name="TTargetType">
+            The type to import. An object of this type will be passed to the 
+            <paramref name="importAction"/> parameter callback.
+            </typeparam>
+            <param name="importAction">
+            A callback function to invoke when an implementation of
+             <typeparamref name="TTargetType"/> is created.
+            </param>
+            <param name="importName">
+            The name of this import operation. If not null, exported classes without 
+            a matching name are excluded.
+            </param>
+            <param name="options">
+            The import options to use. If null or not provided, the value returned by 
+            <see cref="M:Rock.Rock.StaticDependencyInjection.CompositionRootBase.GetDefaultImportOptions"/> is returned.
+            </param>
+        </member>
+        <member name="M:Rock.Rock.StaticDependencyInjection.CompositionRootBase.ImportSingle``2(System.Action{``0},System.Func{``1,``0},System.String,Rock.Rock.StaticDependencyInjection.ImportOptions)">
+            <summary>
+            Imports the type specified by <typeparamref name="TTargetType"/>. When a single
+            class with a public parameterless constructor is found that implements or
+            inherits from either <typeparamref name="TTargetType"/> or
+            <typeparamref name="TFactoryType"/>, then an instance of that class is created. 
+            If that instance is a <typeparamref name="TTargetType"/>, than that instance will be
+            passed to the <paramref name="importAction"/> callback. If the instance is a
+            <typeparamref name="TFactoryType"/>, then an instance of
+            <typeparamref name="TTargetType"/> is obtained by using the 
+            <paramref name="getTarget"/> function and passed to the 
+            <paramref name="importAction"/> callback.
+            </summary>
+            <typeparam name="TTargetType">
+            The type to import. An object of this type will be passed to the 
+            <paramref name="importAction"/> parameter callback.
+            </typeparam>
+            <typeparam name="TFactoryType">
+            A type that exposes a method or property that can be invoked to obtain an instance 
+            of <typeparamref name="TTargetType"/>.
+            </typeparam>
+            <param name="importAction">
+            A callback function to invoke when an implementation of <typeparamref name="TTargetType"/> is created.
+            </param>
+            <param name="getTarget">
+            A function used to obtain an instance of <typeparamref name="TTargetType"/>
+            by using an instance of <typeparamref name="TFactoryType"/>.
+            </param>
+            <param name="importName">
+            The name of this import operation. If not null, exported classes without a matching name are excluded.
+            </param>
+            <param name="options">
+            The import options to use. If null or not provided, the value returned by 
+            <see cref="M:Rock.Rock.StaticDependencyInjection.CompositionRootBase.GetDefaultImportOptions"/> is returned.
+            </param>
+        </member>
+        <member name="M:Rock.Rock.StaticDependencyInjection.CompositionRootBase.ImportFirst``1(System.Action{``0},System.String,Rock.Rock.StaticDependencyInjection.ImportOptions)">
+            <summary>
+            Imports the type specified by <typeparamref name="TTargetType"/>. When any class
+            with a public parameterless constructor is found that implements or inherits from
+            <typeparamref name="TTargetType"/>, then the one with the highest priority will be
+            created and passed to the <paramref name="importAction"/> parameter callback.
+            </summary>
+            <typeparam name="TTargetType">
+            The type to import. An object of this type will be passed to the 
+            <paramref name="importAction"/> parameter callback.
+            </typeparam>
+            <param name="importAction">
+            A callback function to invoke when an implementation of <typeparamref name="TTargetType"/> is created.
+            </param>
+            <param name="importName">
+            The name of this import operation. If not null, exported classes without a matching name are excluded.
+            </param>
+            <param name="options">
+            The import options to use. If null or not provided, the value returned by 
+            <see cref="M:Rock.Rock.StaticDependencyInjection.CompositionRootBase.GetDefaultImportOptions"/> is returned.
+            </param>
+        </member>
+        <member name="M:Rock.Rock.StaticDependencyInjection.CompositionRootBase.ImportFirst``2(System.Action{``0},System.Func{``1,``0},System.String,Rock.Rock.StaticDependencyInjection.ImportOptions)">
+            <summary>
+            Imports the type specified by <typeparamref name="TTargetType"/>. When any
+            class with a public parameterless constructor is found that implements or
+            inherits from either <typeparamref name="TTargetType"/> or
+            <typeparamref name="TFactoryType"/>, then an instance of the highest priority
+            class is created. If that instance is a <typeparamref name="TTargetType"/>, than that 
+            instance will be passed to the <paramref name="importAction"/> callback. If the 
+            instance is a <typeparamref name="TFactoryType"/>, then an instance of
+            <typeparamref name="TTargetType"/> is obtained by using the 
+            <paramref name="getTarget"/> function and passed to the 
+            <paramref name="importAction"/> callback.
+            </summary>
+            <typeparam name="TTargetType">
+            The type to import. An object of this type will be passed to the 
+            <paramref name="importAction"/> parameter callback.
+            </typeparam>
+            <typeparam name="TFactoryType">
+            A type that exposes a method or property that can be invoked to obtain an instance 
+            of <typeparamref name="TTargetType"/>.
+            </typeparam>
+            <param name="importAction">
+            A callback function to invoke when an implementation of <typeparamref name="TTargetType"/> is created.
+            </param>
+            <param name="getTarget">
+            A function used to obtain an instance of <typeparamref name="TTargetType"/>
+            by using an instance of <typeparamref name="TFactoryType"/>.
+            </param>
+            <param name="importName">
+            The name of this import operation. If not null, exported classes without a matching name are excluded.
+            </param>
+            <param name="options">
+            The import options to use. If null or not provided, the value returned by 
+            <see cref="M:Rock.Rock.StaticDependencyInjection.CompositionRootBase.GetDefaultImportOptions"/> is returned.
+            </param>
+        </member>
+        <member name="M:Rock.Rock.StaticDependencyInjection.CompositionRootBase.ImportMultiple``1(System.Action{System.Collections.Generic.IEnumerable{``0}},System.String,Rock.Rock.StaticDependencyInjection.ImportOptions)">
+            <summary>
+            Imports the type specified by <typeparamref name="TTargetType"/> for many
+            implementations. When zero to many classes with a public parameterless 
+            constructor are found that implements or inherits from 
+            <typeparamref name="TTargetType"/>, then an instances of those class will be 
+            created and passed to the <paramref name="importAction"/> parameter callback.
+            </summary>
+            <typeparam name="TTargetType">
+            The type to import. Objects of this type will be passed to the 
+            <paramref name="importAction"/> parameter callback.
+            </typeparam>
+            <param name="importAction">
+            A callback function to invoke when a implementations of 
+            <typeparamref name="TTargetType"/> are created.
+            </param>
+            <param name="importName">
+            The name of this import operation. If not null, exported classes without a matching name are excluded.
+            </param>
+            <param name="options">
+            The import options to use. If null or not provided, the value returned by 
+            <see cref="M:Rock.Rock.StaticDependencyInjection.CompositionRootBase.GetDefaultImportOptions"/> is returned.
+            </param>
+        </member>
+        <member name="M:Rock.Rock.StaticDependencyInjection.CompositionRootBase.ImportMultiple``2(System.Action{System.Collections.Generic.IEnumerable{``0}},System.Func{``1,``0},System.String,Rock.Rock.StaticDependencyInjection.ImportOptions)">
+            <summary>
+            Imports the type specified by <typeparamref name="TTargetType"/> for many 
+            implementations. When zero to many classes with a public parameterless 
+            constructor are found that implements or inherits from either 
+            <typeparamref name="TTargetType"/> or <typeparamref name="TFactoryType"/>, 
+            then instances of those classes are created. If an instance is a 
+            <typeparamref name="TTargetType"/>, than that instance will be passed as part of a 
+            collection to the <paramref name="importAction"/> callback. If an instance is a
+            <typeparamref name="TFactoryType"/>, then an instance of
+            <typeparamref name="TTargetType"/> is obtained by using the 
+            <paramref name="getTarget"/> function and passed to the 
+            <paramref name="importAction"/> callback.
+            </summary>
+            <typeparam name="TTargetType">
+            The type to import. Objects of this type will be passed to the 
+            <paramref name="importAction"/> parameter callback.
+            </typeparam>
+            <typeparam name="TFactoryType">
+            A type that exposes a method or property that can be invoked to obtain an instance 
+            of <typeparamref name="TTargetType"/>.
+            </typeparam>
+            <param name="importAction">
+            A callback function to invoke when a implementations of 
+            <typeparamref name="TTargetType"/> are created.
+            </param>
+            <param name="getTarget">
+            A function used to obtain an instance of <typeparamref name="TTargetType"/>
+            by using an instance of <typeparamref name="TFactoryType"/>.
+            </param>
+            <param name="importName">
+            The name of this import operation. If not null, exported classes without a matching name are excluded.
+            </param>
+            <param name="options">
+            The import options to use. If null or not provided, the value returned by 
+            <see cref="M:Rock.Rock.StaticDependencyInjection.CompositionRootBase.GetDefaultImportOptions"/> is returned.
+            </param>
+        </member>
+        <member name="P:Rock.Rock.StaticDependencyInjection.CompositionRootBase.IsEnabled">
+            <summary>
+            Gets a value indicating whether static dependency injection is enabled.
+            </summary>
+        </member>
+        <member name="M:Rock.Rock.StaticDependencyInjection.CompositionRoot.GetExportInfos(System.Type)">
+            <summary>
+            Return a collection of metadata objects that describe the export operations for a type.
+            </summary>
+            <param name="type">The type to get export metadata.</param>
+            <returns>A collection of metadata objects that describe export operations.</returns>
+        </member>
+        <member name="P:Rock.Rock.StaticDependencyInjection.CompositionRoot.IsEnabled">
+            <summary>
+            Gets a value indicating whether static dependency injection is enabled.
+            </summary>
+        </member>
+        <member name="T:Rock.Rock.StaticDependencyInjection.Default`1">
+            <summary>
+            An internal helper class that makes it easier for your library to implement
+            the static default pattern that Rock.StaticDependencyInjection is meant to
+            support.
+            </summary>
+            <typeparam name="T">A type that requires a default instance.</typeparam>
+        </member>
+        <member name="M:Rock.Rock.StaticDependencyInjection.Default`1.#ctor(System.Func{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rock.Rock.StaticDependencyInjection.Default`1"/> class.
+            </summary>
+            <param name="createDefaultInstance">
+            A function that describes how to create the the object returned by the
+            <see cref="P:Rock.Rock.StaticDependencyInjection.Default`1.DefaultInstance"/> property.
+            </param>
+        </member>
+        <member name="M:Rock.Rock.StaticDependencyInjection.Default`1.RestoreDefault">
+            <summary>
+            Restores the value of the <see cref="P:Rock.Rock.StaticDependencyInjection.Default`1.Current"/> property to the value of
+            the <see cref="P:Rock.Rock.StaticDependencyInjection.Default`1.DefaultInstance"/> property.
+            </summary>
+        </member>
+        <member name="M:Rock.Rock.StaticDependencyInjection.Default`1.SetCurrent(System.Func{`0})">
+            <summary>
+            Sets the value of the <see cref="P:Rock.Rock.StaticDependencyInjection.Default`1.Current"/> property. If the
+            <paramref name="getInstance"/> parameter is null, sets the value of the
+            <see cref="P:Rock.Rock.StaticDependencyInjection.Default`1.Current"/> to the value of the <see cref="P:Rock.Rock.StaticDependencyInjection.Default`1.DefaultInstance"/>
+            property.
+            </summary>
+            <param name="getInstance">
+            A function that returns the value for the <see cref="P:Rock.Rock.StaticDependencyInjection.Default`1.Current"/> property.
+            </param>
+        </member>
+        <member name="M:Rock.Rock.StaticDependencyInjection.Default`1.SetCurrent(`0)">
+            <summary>
+            Sets the value of the <see cref="P:Rock.Rock.StaticDependencyInjection.Default`1.Current"/> property. If the
+            <paramref name="instance"/> parameter is null, sets the value of the
+            <see cref="P:Rock.Rock.StaticDependencyInjection.Default`1.Current"/> to the value of the <see cref="P:Rock.Rock.StaticDependencyInjection.Default`1.DefaultInstance"/>
+            property.
+            </summary>
+            <param name="instance">
+            The value for the <see cref="P:Rock.Rock.StaticDependencyInjection.Default`1.Current"/> property.
+            </param>
+        </member>
+        <member name="P:Rock.Rock.StaticDependencyInjection.Default`1.DefaultInstance">
+            <summary>
+            Gets the default instance of <typeparamref name="T"/>. This value is 
+            returned by the <see cref="P:Rock.Rock.StaticDependencyInjection.Default`1.Current"/> property when neither the
+            <see cref="M:Rock.Rock.StaticDependencyInjection.Default`1.SetCurrent(System.Func{`0})"/> nor <see cref="M:Rock.Rock.StaticDependencyInjection.Default`1.SetCurrent(`0)"/>
+            has been called.
+            </summary>
+        </member>
+        <member name="P:Rock.Rock.StaticDependencyInjection.Default`1.Current">
+            <summary>
+            Gets the current value for an instance of type <typeparamref name="T"/>.
+            </summary>
+        </member>
+        <member name="T:Rock.Rock.StaticDependencyInjection.ExportInfo">
+            <summary>
+            Provides information about an export.
+            </summary>
+        </member>
+        <member name="F:Rock.Rock.StaticDependencyInjection.ExportInfo.DefaultPriority">
+            <summary>
+            The default priority for an instance of <see cref="T:Rock.Rock.StaticDependencyInjection.ExportInfo"/> if not specified.
+            </summary>
+        </member>
+        <member name="M:Rock.Rock.StaticDependencyInjection.ExportInfo.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rock.Rock.StaticDependencyInjection.ExportInfo"/> class with
+            a priority with the value of <see cref="F:Rock.Rock.StaticDependencyInjection.ExportInfo.DefaultPriority"/>.
+            </summary>
+            <param name="targetClass">The class to be exported.</param>
+        </member>
+        <member name="M:Rock.Rock.StaticDependencyInjection.ExportInfo.#ctor(System.Type,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rock.Rock.StaticDependencyInjection.ExportInfo"/> class.
+            </summary>
+            <param name="targetClass">The class to be exported.</param>
+            <param name="priority">
+            The priority of the export, relative to the priority of other exports.
+            </param>
+        </member>
+        <member name="P:Rock.Rock.StaticDependencyInjection.ExportInfo.TargetClass">
+            <summary>
+            Gets the class to be exported.
+            </summary>
+        </member>
+        <member name="P:Rock.Rock.StaticDependencyInjection.ExportInfo.Priority">
+            <summary>
+            Gets the priority of the export, relative to the priority of other exports.
+            The default value, if not specified in the constructor is negative one.
+            This value is used during import operations to sort the discovered classes.
+            </summary>
+        </member>
+        <member name="P:Rock.Rock.StaticDependencyInjection.ExportInfo.Name">
+            <summary>
+            Gets or sets the name of the export. This value is compared against the
+            name parameter in various import operations.
+            </summary>
+        </member>
+        <member name="P:Rock.Rock.StaticDependencyInjection.ExportInfo.Disabled">
+            <summary>
+            Gets or sets a value indicating whether the type indicated by
+            <see cref="P:Rock.Rock.StaticDependencyInjection.ExportInfo.TargetClass"/> should be excluded from consideration during an
+            import operation.
+            </summary>
+        </member>
+        <member name="T:Rock.Rock.StaticDependencyInjection.ImportOptions">
+            <summary>
+            Defines various options for an import operation.
+            </summary>
+        </member>
+        <member name="M:Rock.Rock.StaticDependencyInjection.ImportOptions.GetDefaultDirectoryPaths">
+            <summary>
+            Returns an array containing a single element: the value returned by
+            AppDomain.CurrentDomain.BaseDirectory.
+            </summary>
+        </member>
+        <member name="M:Rock.Rock.StaticDependencyInjection.ImportOptions.GetDefaultExportComparer">
+            <summary>
+            Gets a new instance of <see cref="T:Rock.Rock.StaticDependencyInjection.ImportOptions.TargetClassAssemblyQualifiedNameComparer"/>.
+            </summary>
+        </member>
+        <member name="P:Rock.Rock.StaticDependencyInjection.ImportOptions.AllowNonPublicClasses">
+            <summary>
+            Gets or sets a value indicating whether to allow non-public classes to be imported.
+            Default value is false, indicating that only public classes will be included in an
+            import operation.
+            </summary>
+        </member>
+        <member name="P:Rock.Rock.StaticDependencyInjection.ImportOptions.IncludeNamedExportsFromUnnamedImports">
+            <summary>
+            Gets or sets a value indicating whether a named export will be included from an
+            unnamed import operation. Default value is false, indicating that named exports
+            will not be used given an unnamed import.
+            </summary>
+        </member>
+        <member name="P:Rock.Rock.StaticDependencyInjection.ImportOptions.PreferTTargetType">
+            <summary>
+            Gets or sets a value indicating whether, given equal priorities, an implementation
+            of TTargetType will be chosen over an implementation of TFactoryType. Default
+            value is false, indicating that TFactoryType will be preferred.
+            </summary>
+        </member>
+        <member name="P:Rock.Rock.StaticDependencyInjection.ImportOptions.IncludeTypesFromThisAssembly">
+            <summary>
+            Gets or sets a value indicating whether types that are defined in this assembly
+            should be considered from an import operation. Default value is false, indicating
+            that types defined in this assembly will be excluded.
+            </summary>
+        </member>
+        <member name="P:Rock.Rock.StaticDependencyInjection.ImportOptions.DirectoryPaths">
+            <summary>
+            Gets or sets the directory paths that are searched for an import operation. 
+            If not set, or set to null, the value returned will contain a single element:
+            the value returned by AppDomain.CurrentDomain.BaseDirectory.
+            </summary>
+        </member>
+        <member name="P:Rock.Rock.StaticDependencyInjection.ImportOptions.ExportComparer">
+            <summary>
+            Gets or sets a comparer to be used to differentiate between multiple
+            exports with the same priority. If not set, or set to null, the value
+            returned will be a comparer that sorts based on the assembly qualified
+            name of the target class.
+            </summary>
+        </member>
+        <member name="T:Rock.Immutable.Semimutable`1">
+            <summary>
+            Represents a "semimutable" value. Its value can be changed either via the setter of the <see cref="P:Rock.Immutable.Semimutable`1.Value"/>
+            property, or by calling the <see cref="M:Rock.Immutable.Semimutable`1.SetValue(System.Func{`0})"/> method. However, once the getter of the
+            <see cref="P:Rock.Immutable.Semimutable`1.Value"/> property is accessed or the <see cref="M:Rock.Immutable.Semimutable`1.LockValue"/> method is called, the value will
+            never change again.
+            <para>
+            It's like Schrödinger's cat - once you open the box, the cat's fate is sealed.
+            </para>
+            </summary>
+            <typeparam name="T">The type of the value.</typeparam>
+        </member>
+        <member name="M:Rock.Immutable.Semimutable`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rock.Immutable.Semimutable`1"/> class.
+            </summary>
+            <remarks>
+            Calls <see cref="M:Rock.Immutable.Semimutable`1.#ctor(System.Boolean)"/>, passing <c>false</c>.
+            </remarks>
+        </member>
+        <member name="M:Rock.Immutable.Semimutable`1.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rock.Immutable.Semimutable`1"/> class.
+            </summary>
+            <remarks>
+            Calls <see cref="M:Rock.Immutable.Semimutable`1.#ctor(`0,System.Boolean)"/> with parameters: the value of <c>default(T)</c>;
+            and the value of <paramref name="canUnlock"/>.
+            </remarks>
+        </member>
+        <member name="M:Rock.Immutable.Semimutable`1.#ctor(`0,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rock.Immutable.Semimutable`1"/> class.
+            </summary>
+            <param name="defaultValue">The default value.</param>
+            <param name="canUnlock">
+            Whether this instance of <see cref="T:Rock.Immutable.Semimutable`1"/> can be unlocked after it has
+            been locked.
+            </param>
+            <remarks>
+            Calls <see cref="M:Rock.Immutable.Semimutable`1.#ctor(System.Func{`0},System.Boolean)"/> with parameters: a function that returns
+            <paramref name="defaultValue"/>; and the value of <paramref name="canUnlock"/>.
+            </remarks>
+        </member>
+        <member name="M:Rock.Immutable.Semimutable`1.#ctor(System.Func{`0},System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rock.Immutable.Semimutable`1"/> class.
+            </summary>
+            <param name="getDefaultValue">A function that returns the default value.</param>
+            <param name="canUnlock">
+            Whether this instance of <see cref="T:Rock.Immutable.Semimutable`1"/> can be unlocked after it has
+            been locked.
+            </param>
+        </member>
+        <member name="M:Rock.Immutable.Semimutable`1.ResetValue">
+            <summary>
+            Sets the <see cref="P:Rock.Immutable.Semimutable`1.Value"/> property to this instance's original default value.
+            </summary>
+        </member>
+        <member name="M:Rock.Immutable.Semimutable`1.LockValue">
+            <summary>
+            Locks the <see cref="P:Rock.Immutable.Semimutable`1.Value"/> property and prevents any further changes from being accepted.
+            </summary>
+        </member>
+        <member name="M:Rock.Immutable.Semimutable`1.UnlockValue">
+            <summary>
+            Unlocks the <see cref="P:Rock.Immutable.Semimutable`1.Value"/> property, allowing changes to be accepted. If the value of the
+            <see cref="P:Rock.Immutable.Semimutable`1.CanUnlock"/> property is false, then this method does nothing.
+            </summary>
+            <remarks>
+            This method should not be used "in production". It's main use is to help facilitate testing.
+            </remarks>
+        </member>
+        <member name="M:Rock.Immutable.Semimutable`1.SetValue(System.Func{`0})">
+            <summary>
+            Sets the value of the <see cref="P:Rock.Immutable.Semimutable`1.Value"/> property using a function that will not be 
+            evaluated until either the <see cref="P:Rock.Immutable.Semimutable`1.Value"/> property is accessed (the getter), or the
+            <see cref="M:Rock.Immutable.Semimutable`1.LockValue"/> method is called.
+            </summary>
+            <param name="getValue">
+            A function whose return value is used to set the <see cref="P:Rock.Immutable.Semimutable`1.Value"/> property.
+            </param>
+        </member>
+        <member name="P:Rock.Immutable.Semimutable`1.Value">
+            <summary>
+            Gets or sets the value of the semimutable object. The setter can be called multiple times, but
+            only the last value "wins". Once the getter is called (or the <see cref="M:Rock.Immutable.Semimutable`1.LockValue"/> method is
+            called), the value is "locked" - any value passed to the setter is ignored from this point forward.
+            </summary>
+        </member>
+        <member name="P:Rock.Immutable.Semimutable`1.CanUnlock">
+            <summary>
+            Gets a value indicating whether this instance can be unlocked.
+            </summary>
+        </member>
+        <member name="P:Rock.Immutable.Semimutable`1.IsLocked">
+            <summary>
+            Gets a value indicating whether this instance is locked.
+            </summary>
+        </member>
+        <member name="P:Rock.Immutable.Semimutable`1.HasDefaultValue">
+            <summary>
+            Gets a value indicating whether this instance has (or will have) the default value.
+            </summary>
+        </member>
+        <member name="T:Rock.Reflection.SlowFactory">
+            <summary>
+            Provides unoptimized mechanisms for creating instances of types.
+            </summary>
+        </member>
+        <member name="M:Rock.Reflection.SlowFactory.CreateInstance``1(System.String)">
+            <summary>
+            Creates an instance of the type represented by <paramref name="assemblyQualifiedType"/>,
+            cast to <typeparamref name="T"/>. If a type cannot be located, if the type is not
+            assignable to <typeparamref name="T"/>, or if the type does not have a suitable
+            constructor, an exception is thrown. Suitable constructors include public
+            parameterless constructors, and constructors whose parameters all have
+            a default value.
+            </summary>
+            <typeparam name="T">The type of the object to return.</typeparam>
+            <param name="assemblyQualifiedType">The assembly qualified name of the type to create.</param>
+            <returns>An instance of the type represented by <paramref name="assemblyQualifiedType"/>.</returns>
+        </member>
+        <member name="T:Rock.StaticDependencyInjection.ExportAttribute">
+            <summary>
+            Indicates that a class should be exported as a static dependency.
+            </summary>
+        </member>
+        <member name="M:Rock.StaticDependencyInjection.ExportAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rock.StaticDependencyInjection.ExportAttribute"/> class.
+            </summary>
+        </member>
+        <member name="M:Rock.StaticDependencyInjection.ExportAttribute.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rock.StaticDependencyInjection.ExportAttribute"/> class.
+            </summary>
+            <param name="priority">The priority of the class.</param>
+        </member>
+        <member name="P:Rock.StaticDependencyInjection.ExportAttribute.Priority">
+            <summary>
+            Gets a value that indicates this class's relative priority.
+            </summary>
+        </member>
+        <member name="P:Rock.StaticDependencyInjection.ExportAttribute.Disabled">
+            <summary>
+            Gets a value indicating whether this class is explicitly ineligible for exporting.
+            </summary>
+        </member>
+        <member name="P:Rock.StaticDependencyInjection.ExportAttribute.Name">
+            <summary>
+            Gets or sets the arbitrary name of this export. Named import operations use
+            this value to filter eligible results.
+            </summary>
+        </member>
+        <member name="T:Rock.Serialization.XmlDeserializationProxy`1">
+            <summary>
+            A class that creates instances of type <typeparamref name="TTarget"/>. Instances of
+            <see cref="T:Rock.Serialization.XmlDeserializationProxy`1"/> are intended to be created via
+            standard deserialization.
+            </summary>
+            <typeparam name="TTarget">The type of object that an instance of
+            <see cref="T:Rock.Serialization.XmlDeserializationProxy`1"/></typeparam> creates.
+            <remarks>
+            The <see cref="T:Rock.Serialization.XmlDeserializationProxy`1"/> class is flexible in the xml that
+            it accepts.
+            
+            For example, we want to obtain an instance of the FooContainer class:
+            
+            <code>
+            <![CDATA[
+            public class FooContainer
+            {
+                public XmlDeserializationProxy<IFoo> Foo { get; set; }
+            }
+            
+            public interface IFoo
+            {
+                void FooBar();
+            }
+            
+            public class Foo : IFoo
+            {
+                private readonly string _bar;
+            
+                public Foo(string bar)
+                {
+                    _bar = bar;
+                }
+            
+                public void FooBar()
+                {
+                    Console.WriteLine("Foo: {0}", _bar);
+                }
+            }
+            ]]>
+            </code>
+            
+            In order to obtain an instance of the 'FooContainer' class, use standard xml
+            serialization.
+            
+            <code>
+            string xml = GetXml();
+            
+            FooContainer fooContainer;
+            
+            using (var stringReader = new StringReader(xml))
+            {
+                var serializer = new XmlSerializer(typeof(FooContainer));
+                fooContainer = (FooContainer)serializer.Deserialize(stringReader);
+            }
+            </code>
+            
+            Now we can create an instance of the 'IFoo' interface, using the 'Foo' property.
+            
+            <code>
+            IFoo foo = fooContainer.Foo.CreateInstance();
+            </code>
+            
+            We can use this xml to deserialize an instance of FooContainer. Note that the
+            'Foo' element has a 'type' attribute that describes the type that should be
+            created by the XmlDeserializationProxy&lt;IFoo&gt;.
+            
+            <code>
+            <![CDATA[
+            <FooContainer>
+              <Foo type="MyNamespace.Foo, MyAssembly">
+                <Bar>abc</Bar>
+              </Foo>
+            </FooContainer>
+            ]]>
+            </code>
+            
+            Note that the 'Bar' property of the 'Foo' class is specified by an element. We
+            can also specify the 'Bar' property with an xml attribute.
+            
+            <code>
+            <![CDATA[
+            <FooContainer>
+              <Foo type="MyNamespace.Foo, MyAssembly" Bar="abc" />
+            </FooContainer>
+            ]]>
+            </code>
+            
+            These dynamic properties are also case-insensitive.
+            
+            <code>
+            <![CDATA[
+            <FooContainer>
+              <Foo type="MyNamespace.Foo, MyAssembly">
+                <bar>abc</bar>
+              </Foo>
+            </FooContainer>
+            
+            <FooContainer>
+              <Foo type="MyNamespace.Foo, MyAssembly" bar="abc" />
+            </FooContainer>
+            ]]>
+            </code>
+            
+            If we want to supply a default type (and omit the 'type' xml attribute), we need
+            to create a subclass of <see cref="T:Rock.Serialization.XmlDeserializationProxy`1"/>.
+            
+            <code>
+            <![CDATA[
+            public class FooProxy : XmlDeserializationProxy<IFoo>
+            {
+                public FooProxy()
+                    : base(typeof(Foo))
+                {
+                }
+            }
+            
+            public class FooContainer
+            {
+                public FooProxy Foo { get; set; }
+            }
+            ]]>
+            </code>
+            
+            Now our xml doesn't need to specify the 'type' xml attribute (but it still can if 
+            it needs a type other than the default type).
+            
+            <code>
+            <![CDATA[
+            <FooContainer>
+              <Foo Bar="abc" />
+            </FooContainer>
+            ]]>
+            </code>
+            </remarks>
+        </member>
+        <member name="M:Rock.Serialization.XmlDeserializationProxy`1.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Rock.Serialization.XmlDeserializationProxy`1"/>
+            without specifying a default type. If no type is provided via the 
+            <see cref="P:Rock.Serialization.XmlDeserializationProxy`1.TypeAssemblyQualifiedName"/> property after this instance of
+            <see cref="T:Rock.Serialization.XmlDeserializationProxy`1"/> has been create, then subsequent
+            calls to the <see cref="M:Rock.Serialization.XmlDeserializationProxy`1.CreateInstance"/> or <see cref="M:Rock.Serialization.XmlDeserializationProxy`1.CreateInstance(Rock.DependencyInjection.IResolver)"/>
+            methods will fail.
+            </summary>
+        </member>
+        <member name="M:Rock.Serialization.XmlDeserializationProxy`1.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of <see cref="T:Rock.Serialization.XmlDeserializationProxy`1"/>,
+            specifying a default type. If <paramref name="defaultType"/> is null, and if no 
+            type is provided via the <see cref="P:Rock.Serialization.XmlDeserializationProxy`1.TypeAssemblyQualifiedName"/> property after
+            this instance of <see cref="T:Rock.Serialization.XmlDeserializationProxy`1"/> has been create, 
+            then subsequent calls to the <see cref="M:Rock.Serialization.XmlDeserializationProxy`1.CreateInstance"/> or
+            <see cref="M:Rock.Serialization.XmlDeserializationProxy`1.CreateInstance(Rock.DependencyInjection.IResolver)"/> /// methods will fail.
+            </summary>
+            <param name="defaultType">
+            The type of object to create if <see cref="P:Rock.Serialization.XmlDeserializationProxy`1.TypeAssemblyQualifiedName"/> is not specified.
+            </param>
+            <remarks>
+            If the inheritor of <see cref="T:Rock.Serialization.XmlDeserializationProxy`1"/> can supply a
+            default type, its default constructor should invoke this constructor, supplying
+            the default type.
+            <code>
+            <![CDATA[
+            public class FooProxy : XmlDeserializationProxy<IFoo>
+            {
+                public FooProxy()
+                    : base(typeof(Foo))
+                {
+                }
+            }
+            ]]>
+            </code>
+            </remarks>
+        </member>
+        <member name="M:Rock.Serialization.XmlDeserializationProxy`1.CreateInstance">
+            <summary>
+            Create a new instance of the type specified by the <see cref="P:Rock.Serialization.XmlDeserializationProxy`1.TypeAssemblyQualifiedName"/>
+            property, using values from the <see cref="P:Rock.Serialization.XmlDeserializationProxy`1.AdditionalAttributes"/> and
+            <see cref="P:Rock.Serialization.XmlDeserializationProxy`1.AdditionalElements"/> properties, along with any properties specified by
+            an inheritor of the <see cref="T:Rock.Serialization.XmlDeserializationProxy`1"/> class.
+            </summary>
+            <returns>
+            A new instance of the type specified by the <see cref="P:Rock.Serialization.XmlDeserializationProxy`1.TypeAssemblyQualifiedName"/> property.
+            </returns>
+        </member>
+        <member name="M:Rock.Serialization.XmlDeserializationProxy`1.CreateInstance(Rock.DependencyInjection.IResolver)">
+            <summary>
+            Create a new instance of the type specified by the <see cref="P:Rock.Serialization.XmlDeserializationProxy`1.TypeAssemblyQualifiedName"/>
+            property, using values from the <see cref="P:Rock.Serialization.XmlDeserializationProxy`1.AdditionalAttributes"/> and
+            <see cref="P:Rock.Serialization.XmlDeserializationProxy`1.AdditionalElements"/> properties, along with any properties specified by
+            an inheritor of the <see cref="T:Rock.Serialization.XmlDeserializationProxy`1"/> class.
+            </summary>
+            <param name="resolver">
+            An optional <see cref="T:Rock.DependencyInjection.IResolver"/> that can supply any missing values required by a
+            constructor of the type specified by the <see cref="P:Rock.Serialization.XmlDeserializationProxy`1.TypeAssemblyQualifiedName"/>
+            property.
+            </param>
+            <returns>
+            A new instance of the type specified by the <see cref="P:Rock.Serialization.XmlDeserializationProxy`1.TypeAssemblyQualifiedName"/> property.
+            </returns>
+        </member>
+        <member name="M:Rock.Serialization.XmlDeserializationProxy`1.CanResolveParameterValue(System.Reflection.ParameterInfo,Rock.DependencyInjection.IResolver)">
+            <summary>
+            Returns true if a value for the parameter exists in the xml or is the resolver
+            can reolve the parameter's type.
+            </summary>
+        </member>
+        <member name="P:Rock.Serialization.XmlDeserializationProxy`1.TypeAssemblyQualifiedName">
+            <summary>
+            Gets or sets the assembly qualified name of the type that this proxy serializes.
+            NOTE: Do not use this property directly - it exists as an implementation detail
+            for the internal use of the <see cref="T:Rock.Serialization.XmlDeserializationProxy`1"/> class.
+            </summary>
+        </member>
+        <member name="P:Rock.Serialization.XmlDeserializationProxy`1.AdditionalAttributes">
+            <summary>
+            Gets or sets any xml attributes that exist in the xml document, but are not
+            associated with a property of this class (whether this class is
+            <see cref="T:Rock.Serialization.XmlDeserializationProxy`1"/> or its inheritor).
+            NOTE: Do not use this property directly - it exists as an implementation detail
+            for the internal use of the <see cref="T:Rock.Serialization.XmlDeserializationProxy`1"/> class.
+            </summary>
+        </member>
+        <member name="P:Rock.Serialization.XmlDeserializationProxy`1.AdditionalElements">
+            <summary>
+            Gets or sets any xml elements that exist in the xml document, but are not
+            associated with a property of this class (whether this class is
+            <see cref="T:Rock.Serialization.XmlDeserializationProxy`1"/> or its inheritor).
+            NOTE: Do not use this property directly - it exists as an implementation detail
+            for the internal use of the <see cref="T:Rock.Serialization.XmlDeserializationProxy`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Rock.StringFormatting.ToHexStringExtensions.ToHexString(System.Byte[],System.Boolean)">
+            <summary>
+            Converts the given byte array into its equivalent hexidecimal string representation.
+            </summary>
+            <param name="buffer">The byte array to convert.</param>
+            <param name="includePrefix">Whether to include the "0x" prefix at the beginning of the return value.</param>
+            <returns>The hexadecimal string reprentation of <paramref name="buffer"/>.</returns>
+        </member>
+        <member name="M:Rock.StringFormatting.ToOctetStringExtension.ToOctetString(System.Guid)">
+            <summary>
+            Converts an encoded GUID to an octet string.
+            </summary>
+            <param name="value">A GUID.</param>
+            <returns>An octet string representation of the GUID.</returns>
+            <remarks>
+            Converts the guid id in the format of xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx to \xx\xx\xx\xx\xx\xx\xx\xx\xx\xx\xx
+            </remarks>
+        </member>
+        <member name="T:Rock.Threading.SoftLock">
+            <summary>
+            An object that enables exclusive access to critical sections of code. Unlike a true lock, where
+            a thread will block while another thread has the lock, a "soft lock" will cause a thread to skip over
+            a critical section of code if another thread has the lock.
+            </summary>
+        </member>
+        <member name="M:Rock.Threading.SoftLock.TryAcquire">
+            <summary>
+            Try to acquire the lock. Returns true if the lock is acquired. Returns false if the lock has
+            already been acquired.
+            </summary>
+            <returns>True, if the lock was acquired. False, if another thread currently has the lock</returns>
+        </member>
+        <member name="M:Rock.Threading.SoftLock.Release">
+            <summary>
+            Release the lock. Should only be called after successfully acquiring the lock.
+            </summary>
+        </member>
+        <member name="P:Rock.Threading.SoftLock.IsLockAcquired">
+            <summary>
+            Gets a value indicating whether the lock has been acquired.
+            </summary>
+        </member>
+        <member name="T:Rock.Reflection.IsIDictionryOfTToAnythingExtension">
+            <summary>
+            Provides an extension method that determines whether a type implements
+            <see cref="T:System.Collections.Generic.IDictionary`2"/> where the type of the key is known
+            but the type of the value is unknown.
+            </summary>
+        </member>
+        <member name="M:Rock.Reflection.IsIDictionryOfTToAnythingExtension.IsIDictionaryOfTToAnything``1(System.Type)">
+            <summary>
+            Determines whether the given type is or implements IDictionary&lt;TKey,&gt;,
+            where the type of the key of the dictionary is <typeparamref name="TKey"/>
+            and the type of the value is anything.
+            </summary>
+            <typeparam name="TKey">The type of the Key of a dictionary.</typeparam>
+            <param name="type">The type to check whether is is or implements IDictionary&lt;TKey,&gt;.</param>
+            <returns>Whether the given type is or implements IDictionary&lt;TKey,&gt;.</returns>
+        </member>
+        <member name="T:Rock.Reflection.GetGetFuncExtension">
+            <summary>
+            Provides extension methods for the <see cref="T:System.Reflection.PropertyInfo"/> type, creating
+            optimized functions that retrieve the value of a <see cref="T:System.Reflection.PropertyInfo"/>.
+            </summary>
+        </member>
+        <member name="M:Rock.Reflection.GetGetFuncExtension.GetGetFunc(System.Reflection.PropertyInfo)">
+            <summary>
+            Gets a Func&gt;object, object&lt; that, when invoked, returns the value
+            of the property represented by <paramref name="propertyInfo"/>.
+            </summary>
+            <param name="propertyInfo">
+            The <see cref="T:System.Reflection.PropertyInfo"/> that represents the property whose value 
+            is returned by the return function.
+            </param>
+            <returns>
+            A Func&gt;object, object&lt; that, when invoked, returns the value
+            of the property represented by <paramref name="propertyInfo"/>.
+            </returns>
+        </member>
+        <member name="M:Rock.Reflection.GetGetFuncExtension.GetGetFunc``2(System.Reflection.PropertyInfo)">
+            <summary>
+            Gets a <see cref="T:System.Func`2"/> that, when invoked, returns the value
+            of the property represented by <paramref name="propertyInfo"/>.
+            </summary>
+            <param name="propertyInfo">
+            The <see cref="T:System.Reflection.PropertyInfo"/> that represents the property whose value 
+            is returned by the return function.
+            </param>
+            <typeparam name="TInstance">
+            The type of the input parameter of the resulting <see cref="T:System.Func`2"/>.
+            </typeparam>
+            <typeparam name="TProperty">
+            The return type of the resulting <see cref="T:System.Func`2"/>.
+            </typeparam>
+            <returns>
+            A <see cref="T:System.Func`2"/> that, when invoked, returns the value
+            of the property represented by <paramref name="propertyInfo"/>.
+            </returns>
+        </member>
+        <member name="T:Rock.Serialization.ISerializer">
+            <summary>
+            Defines a common interface for general-purpose serialization.
+            </summary>
+        </member>
+        <member name="M:Rock.Serialization.ISerializer.SerializeToStream(System.IO.Stream,System.Object,System.Type)">
+            <summary>
+            Serialize the <paramref name="item"/> object, as type <paramref name="type"/>
+            to the <paramref name="stream"/> stream.
+            </summary>
+            <param name="stream">The stream to serialize to.</param>
+            <param name="item">The object to serialize.</param>
+            <param name="type">The type to serialize the object as.</param>
+        </member>
+        <member name="M:Rock.Serialization.ISerializer.DeserializeFromStream(System.IO.Stream,System.Type)">
+            <summary>
+            Deserialize from the <paramref name="stream"/> stream as type
+            <paramref name="type"/>.
+            </summary>
+            <param name="stream">The stream to deserialize from.</param>
+            <param name="type">The type to deserialize as.</param>
+            <returns>An instance of type <paramref name="type"/>.</returns>
+        </member>
+        <member name="M:Rock.Serialization.ISerializer.SerializeToString(System.Object,System.Type)">
+            <summary>
+            Serialize the <paramref name="item"/> object, as type <paramref name="type"/>
+            to a string.
+            </summary>
+            <param name="item">The object to serialize.</param>
+            <param name="type">The type to serialize the object as.</param>
+            <returns>A string representing the <paramref name="item"/> object.</returns>
+        </member>
+        <member name="M:Rock.Serialization.ISerializer.DeserializeFromString(System.String,System.Type)">
+            <summary>
+            Deserialize from the string as type <paramref name="type"/>.
+            </summary>
+            <param name="data">The string containing a representation of an object of type <paramref name="type"/>.</param>
+            <param name="type">The type to deserialize as.</param>
+            <returns>An instance of type <paramref name="type"/>.</returns>
+        </member>
+        <member name="M:Rock.Serialization.XmlSerializerSerializer.CheckType(System.Type,System.Object)">
+            <summary>
+            If <paramref name="type"/> is abstract, return item.GetType().
+            If <paramref name="type"/> is not abstract, return it.
+            </summary>
+            <remarks>
+            This check allows us to handle an abstract type during
+            serialization. There's still nothing that can be done when
+            deserializing.
+            </remarks>
+        </member>
+        <member name="T:Rock.EntryAssemblyApplicationIdProvider">
+            <summary>
+            An implementation of <see cref="T:Rock.IApplicationIdProvider"/> that uses the entry
+            assembly's name as the ApplicationId.
+            </summary>
+        </member>
+        <member name="M:Rock.EntryAssemblyApplicationIdProvider.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rock.EntryAssemblyApplicationIdProvider"/> class.
+            </summary>
+        </member>
+        <member name="M:Rock.EntryAssemblyApplicationIdProvider.GetApplicationId">
+            <summary>
+            Gets the ID of the current application.
+            </summary>
+        </member>
+        <member name="T:Rock.Collections.KeyedCollection`2">
+            <summary>
+            Provides the abstract base class for a collection whose keys are embedded in the values.
+            </summary>
+            <typeparam name="TKey">The type of keys in the collection.</typeparam>
+            <typeparam name="TItem">The type of items in the collection.</typeparam>
+        </member>
+        <member name="T:Rock.Collections.IKeyedEnumerable`2">
+            <summary>
+            Represents a collection whose keys are embedded in the values.
+            </summary>
+            <typeparam name="TKey">The type of keys in the collection.</typeparam>
+            <typeparam name="TItem">The type of items in the collection.</typeparam>
+        </member>
+        <member name="M:Rock.Collections.IKeyedEnumerable`2.Contains(`0)">
+            <summary>
+            Determines whether the collection contains an element with the specified key.
+            </summary>
+            <param name="key">The key to locate in the <see cref="T:Rock.Collections.IKeyedEnumerable`2"/>.</param>
+            <returns>true if the <see cref="T:Rock.Collections.IKeyedEnumerable`2"/> contains an element with the specified key; otherwise, false.</returns>
+        </member>
+        <member name="P:Rock.Collections.IKeyedEnumerable`2.Item(`0)">
+            <summary>
+            Gets the element with the specified key.
+            </summary>
+            <param name="key">The key of the element to get.</param>
+            <returns>The element with the specified key. If an element with the specified key is not found, an exception is thrown.</returns>
+        </member>
+        <member name="M:Rock.Collections.KeyedCollection`2.#ctor(System.Collections.Generic.IEqualityComparer{`0},System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rock.Collections.KeyedCollection`2"/> class that
+            uses the specified equality comparer and creates a lookup dictionary when the specified
+            threshold is exceeded.
+            </summary>
+            <param name="comparer">
+            The implementation of the <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> generic interface to use
+            when comparing keys, or null to use the default equality comparer for the type of the key, 
+            obtained from <see cref="P:System.Collections.Generic.EqualityComparer`1.Default"/>.
+            </param>
+            <param name="dictionaryCreationThreshold">
+            The number of elements the collection can hold without creating a lookup dictionary 
+            (0 creates the lookup dictionary when the first item is added), or –1 to specify that a 
+            lookup dictionary is never created.
+            </param>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="dictionaryCreationThreshold"/> is less than –1
+            </exception>
+        </member>
+        <member name="T:Rock.DependencyInjection.AutoContainer">
+            <summary>
+            An implementation of <see cref="T:Rock.DependencyInjection.IResolver"/> that registers, at constructor-time,
+            a collection of object instances. When the <see cref="M:Rock.DependencyInjection.AutoContainer.Get``1"/> or <see cref="M:Rock.DependencyInjection.AutoContainer.Get(System.Type)"/>
+            methods are called, these instances are available to be passed as a constructor
+            arguments if the instance satisfies the constructor arg's contract.
+            </summary>
+        </member>
+        <member name="T:Rock.DependencyInjection.IResolver">
+            <summary>
+            Defines methods for obtaining instances of arbitrary types.
+            </summary>
+        </member>
+        <member name="M:Rock.DependencyInjection.IResolver.CanGet(System.Type)">
+            <summary>
+            Returns whether this instance of <see cref="T:Rock.DependencyInjection.IResolver"/> can get an instance of the specified
+            type.
+            </summary>
+            <param name="type">The type to determine whether this instance is able to get an instance of.</param>
+            <returns>True, if this instance can get an instance of the specified type. False, otherwise.</returns>
+        </member>
+        <member name="M:Rock.DependencyInjection.IResolver.Get``1">
+            <summary>
+            Gets an instance of type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type of object to return.</typeparam>
+            <returns>An instance of type <typeparamref name="T"/>.</returns>
+        </member>
+        <member name="M:Rock.DependencyInjection.IResolver.Get(System.Type)">
+            <summary>
+            Gets an instance of type <paramref name="type"/>.
+            </summary>
+            <param name="type">The type of object to return.</param>
+            <returns>An instance of type <paramref name="type"/></returns>
+        </member>
+        <member name="M:Rock.DependencyInjection.IResolver.MergeWith(Rock.DependencyInjection.IResolver)">
+            <summary>
+            Returns a new instance of <see cref="T:Rock.DependencyInjection.IResolver"/> that is the result of a merge operation between
+            this instance of <see cref="T:Rock.DependencyInjection.IResolver"/> and <paramref name="secondaryResolver"/>.
+            </summary>
+            <param name="secondaryResolver">A secondary <see cref="T:Rock.DependencyInjection.IResolver"/>.</param>
+            <returns>An instance of <see cref="T:Rock.DependencyInjection.IResolver"/> resulting from the merge operation.</returns>
+            <remarks>
+            Implementors of this method should return an instance of <see cref="T:Rock.DependencyInjection.IResolver"/> that attempts to
+            resolve via this instance of <see cref="T:Rock.DependencyInjection.IResolver"/> before attempting to resolve from
+            <paramref name="secondaryResolver"/>, recursively. It should set up the relationship such that
+            the resulting <see cref="T:Rock.DependencyInjection.IResolver"/> has access to <paramref name="secondaryResolver"/>, but not
+            the other way around - <paramref name="secondaryResolver"/> shouldn't "know" about this instance 
+            of <see cref="T:Rock.DependencyInjection.IResolver"/> or the <see cref="T:Rock.DependencyInjection.IResolver"/> that is returned by this method.
+            </remarks>
+        </member>
+        <member name="M:Rock.DependencyInjection.AutoContainer.#ctor(Rock.DependencyInjection.AutoContainer)">
+            <summary>
+            Copy constructor. Initializes an instance of an inheritor of <see cref="T:Rock.DependencyInjection.AutoContainer"/>
+            to have the same values for its private backing fields as <paramref name="parentContainer"/>.
+            NOTE: The fields that are copied are the fields defined in in the <see cref="T:Rock.DependencyInjection.AutoContainer"/>
+            class. In other words, fields defined in an inheritor of <see cref="T:Rock.DependencyInjection.AutoContainer"/> will not
+            be copied by this constructor.
+            </summary>
+        </member>
+        <member name="M:Rock.DependencyInjection.AutoContainer.#ctor(System.Object[])">
+            <summary>
+            Initializes a new instance of <see cref="T:Rock.DependencyInjection.AutoContainer"/>, using the
+            <paramref name="instances"/> as its registered dependencies. These
+            depenendencies will be resolvable by this instance of
+            <see cref="T:Rock.DependencyInjection.AutoContainer"/> via any type that exactly one dependency
+            equals, implements, or inherits from. This instance of <see cref="T:Rock.DependencyInjection.AutoContainer"/>
+            will use <see cref="P:Rock.DependencyInjection.AutoContainer.DefaultResolverConstructorSelector"/> internally to determine
+            which constructor of an arbitrary type will be selected for invocation when
+            <see cref="M:Rock.DependencyInjection.AutoContainer.Get``1"/> or <see cref="M:Rock.DependencyInjection.AutoContainer.Get(System.Type)"/> methods are called.
+            </summary>
+            <param name="instances">The objects to use as registered dependencies.</param>
+        </member>
+        <member name="M:Rock.DependencyInjection.AutoContainer.#ctor(Rock.DependencyInjection.Heuristics.IResolverConstructorSelector,System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            Initializes a new instance of <see cref="T:Rock.DependencyInjection.AutoContainer"/>, using the
+            <paramref name="instances"/> as its registered dependencies. These
+            depenendencies will be resolvable by this instance of
+            <see cref="T:Rock.DependencyInjection.AutoContainer"/> via any type that exactly one dependency
+            equals, implements, or inherits from. This instance of <see cref="T:Rock.DependencyInjection.AutoContainer"/>
+            will use the <see cref="T:Rock.DependencyInjection.Heuristics.IResolverConstructorSelector"/> specified by
+            <paramref name="constructorSelector"/> internally to determine
+            which constructor of an arbitrary type will be selected for invocation when
+            <see cref="M:Rock.DependencyInjection.AutoContainer.Get``1"/> or <see cref="M:Rock.DependencyInjection.AutoContainer.Get(System.Type)"/> methods are called.
+            </summary>
+            <param name="constructorSelector">
+            An object that determines which constructor should be used when creating an instance of a type.
+            If null, the value of the <see cref="P:Rock.DependencyInjection.AutoContainer.DefaultResolverConstructorSelector"/> property is used.
+            </param>
+            <param name="instances">The objects to use as registered dependencies.</param>
+        </member>
+        <member name="M:Rock.DependencyInjection.AutoContainer.SetDefaultResolverConstructorSelector(Rock.DependencyInjection.Heuristics.IResolverConstructorSelector)">
+            <summary>
+            Sets the default <see cref="T:Rock.DependencyInjection.Heuristics.IResolverConstructorSelector"/>. If the
+            <see cref="P:Rock.DependencyInjection.AutoContainer.DefaultResolverConstructorSelector"/> has been accessed, then calls to this method
+            have no effect.
+            </summary>
+            <param name="resolverConstructorSelector">
+            The value that <see cref="P:Rock.DependencyInjection.AutoContainer.DefaultResolverConstructorSelector"/> property should return. Ignored
+            if the <see cref="P:Rock.DependencyInjection.AutoContainer.DefaultResolverConstructorSelector"/> property has previously been accessed.
+            </param>
+        </member>
+        <member name="M:Rock.DependencyInjection.AutoContainer.CanGet(System.Type)">
+            <summary>
+            Returns whether this instance of <see cref="T:Rock.DependencyInjection.AutoContainer"/> can get an instance of the specified
+            type.
+            </summary>
+            <param name="type">The type to determine whether this instance is able to get an instance of.</param>
+            <returns>True, if this instance can get an instance of the specified type. False, otherwise.</returns>
+        </member>
+        <member name="M:Rock.DependencyInjection.AutoContainer.Get``1">
+            <summary>
+            Gets an instance of type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type of object to return.</typeparam>
+            <returns>An instance of type <typeparamref name="T"/>.</returns>
+        </member>
+        <member name="M:Rock.DependencyInjection.AutoContainer.Get(System.Type)">
+            <summary>
+            Gets an instance of type <paramref name="type"/>.
+            </summary>
+            <param name="type">The type of object to return.</param>
+            <returns>An instance of type <paramref name="type"/></returns>
+        </member>
+        <member name="M:Rock.DependencyInjection.AutoContainer.MergeWith(Rock.DependencyInjection.IResolver)">
+            <summary>
+            Returns a new instance of <see cref="T:Rock.DependencyInjection.AutoContainer"/> that is the result of a merge operation between
+            this instance of <see cref="T:Rock.DependencyInjection.AutoContainer"/> and <paramref name="secondaryResolver"/>.
+            </summary>
+            <param name="secondaryResolver">A secondary <see cref="T:Rock.DependencyInjection.IResolver"/>.</param>
+            <returns>An instance of <see cref="T:Rock.DependencyInjection.AutoContainer"/> resulting from the merge operation.</returns>
+        </member>
+        <member name="M:Rock.DependencyInjection.AutoContainer.SetBinding(System.Type,System.Type)">
+            <summary>
+            Explicitly set the binding. When the <paramref name="contractType"/> type
+            needs to be resolved, AutoContainer will resolve it using
+            <paramref name="implementationType"/>.
+            </summary>
+            <param name="contractType">The type of the contract.</param>
+            <param name="implementationType">The type of the implementation.</param>
+        </member>
+        <member name="M:Rock.DependencyInjection.AutoContainer.GetGetInstanceFunc(System.Type)">
+            <summary>
+            Returns <see cref="F:Rock.DependencyInjection.AutoContainer._getInstanceFuncNotFound"/> if the type is unresolvable.
+            </summary>
+        </member>
+        <member name="P:Rock.DependencyInjection.AutoContainer.DefaultResolverConstructorSelector">
+            <summary>
+            Gets the default instance of <see cref="T:Rock.DependencyInjection.Heuristics.IResolverConstructorSelector"/>. Used by the
+            constructors of the <see cref="T:Rock.DependencyInjection.AutoContainer"/> class when the
+            <see cref="T:Rock.DependencyInjection.Heuristics.IResolverConstructorSelector"/> parameter is null or not present.
+            </summary>
+        </member>
+        <member name="T:Rock.IO.EncodedStringWriter">
+            <summary>
+            Implements a <see cref="T:System.IO.TextWriter"/> for writing information to a string. The information is stored in an 
+            underlying <see cref="T:System.Text.StringBuilder"/>. This class overrides the <see cref="P:Rock.IO.EncodedStringWriter.Encoding"/>
+            property of the base class, <see cref="T:System.IO.StringWriter"/>, which always returns
+            <see cref="P:System.Text.Encoding.Unicode"/>.
+            </summary>
+        </member>
+        <member name="M:Rock.IO.EncodedStringWriter.#ctor(System.Text.Encoding)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rock.IO.EncodedStringWriter"/> class using the specified
+            encoding. If no encoding is provided, <see cref="P:System.Text.Encoding.UTF8"/> is used.
+            </summary>
+            <param name="encoding">The encoding in which the output is written.</param>
+        </member>
+        <member name="M:Rock.IO.EncodedStringWriter.#ctor(System.Text.StringBuilder,System.Text.Encoding)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rock.IO.EncodedStringWriter"/> class that writes to the specified
+            <see cref="T:System.Text.StringBuilder"/> using the specified encoding. If no encoding is provided, 
+            <see cref="P:System.Text.Encoding.UTF8"/> is used.
+            </summary>
+            <param name="sb">The <see cref="T:System.Text.StringBuilder"/> to write to.</param>
+            <param name="encoding">The encoding in which the output is written.</param>
+        </member>
+        <member name="M:Rock.IO.EncodedStringWriter.#ctor(System.IFormatProvider,System.Text.Encoding)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rock.IO.EncodedStringWriter"/> class with the specified format 
+            control using the specified encoding. If no encoding is provided, 
+            <see cref="P:System.Text.Encoding.UTF8"/> is used.
+            </summary>
+            <param name="formatProvider">An <see cref="T:System.IFormatProvider"/> object that controls formatting.</param>
+            <param name="encoding">The encoding in which the output is written.</param>
+        </member>
+        <member name="M:Rock.IO.EncodedStringWriter.#ctor(System.Text.StringBuilder,System.IFormatProvider,System.Text.Encoding)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Rock.IO.EncodedStringWriter"/> class that writes to the specified
+            <see cref="T:System.Text.StringBuilder"/>, has the specified format provider, and uses the specified encoding. If no 
+            encoding is provided, <see cref="P:System.Text.Encoding.UTF8"/> is used.
+            </summary>
+            <param name="sb">The <see cref="T:System.Text.StringBuilder"/> to write to.</param>
+            <param name="formatProvider">An <see cref="T:System.IFormatProvider"/> object that controls formatting.</param>
+            <param name="encoding">The encoding in which the output is written.</param>
+        </member>
+        <member name="P:Rock.IO.EncodedStringWriter.Encoding">
+            <summary>
+            Gets the System.Text.Encoding in which the output is written.
+            </summary>
+            <returns>The Encoding in which the output is written.</returns>
+        </member>
+        <member name="T:Rock.Mail.DeliveryMethod">
+            <summary>
+            Defines three methods for delivering mail: <see cref="P:Rock.Mail.DeliveryMethod.Default"/>, <see cref="M:Rock.Mail.DeliveryMethod.Network(System.String,System.Int32)"/>, and 
+            <see cref="M:Rock.Mail.DeliveryMethod.SpecifiedPickupDirectory(System.String)"/>.
+            </summary>
+        </member>
+        <member name="M:Rock.Mail.DeliveryMethod.ConfigureSmtpClient(System.Net.Mail.SmtpClient)">
+            <summary>
+            When overridden in a derived class, sets various properties of <paramref name="smtpClient"/>.
+            </summary>
+            <param name="smtpClient">The <see cref="T:System.Net.Mail.SmtpClient"/> whose property values will be customized.</param>
+        </member>
+        <member name="M:Rock.Mail.DeliveryMethod.Network(System.String,System.Int32)">
+            <summary>
+            Gets a delivery method for sending mail to the specified host using the specified port.
+            </summary>
+            <param name="host">The host to send mail to.</param>
+            <param name="port">The port on which to send mail. Optional.</param>
+            <returns>A <see cref="T:Rock.Mail.DeliveryMethod.NetworkDeliveryMethod"/> with the specified host and port.</returns>
+        </member>
+        <member name="M:Rock.Mail.DeliveryMethod.SpecifiedPickupDirectory(System.String)">
+            <summary>
+            Gets a delivery method for saving mail messages to a target directory, accessable from the local machine.
+            </summary>
+            <param name="pickupDirectoryLocation">The directory in which to save mail messages.</param>
+            <returns>
+            A <see cref="T:Rock.Mail.DeliveryMethod.SpecifiedPickupDirectoryDeliveryMethod"/>delivery method with the specified target directory.
+            </returns>
+        </member>
+        <member name="P:Rock.Mail.DeliveryMethod.Default">
+            <summary>
+            Gets a delivery method that is configured by an application's web.config or app.config.
+            </summary>
+        </member>
+        <member name="F:Rock.Mail.DeliveryMethod.DefaultDeliveryMethod.Instance">
+            <summary>
+            The singleton instance of <see cref="T:Rock.Mail.DeliveryMethod.DefaultDeliveryMethod"/>.
+            </summary>
+        </member>
+        <member name="M:Rock.Conversion.ConvertsToExpandoObject.GetPropertyValue(System.Object)">
+            <summary>
+            Returns an object suitable for setting the value of a "property" of an ExpandoObject. The return value for 
+            this function will either be the object itself or an ExpandoObject that represents the object.
+            </summary>
+        </member>
+    </members>
+</doc>
