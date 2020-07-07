@@ -40,7 +40,7 @@
             justify-content: center;
         }
 
-        .create_acount, .create_product, .make_admin, .update_product, .go_back, .design_store {
+        a {
             text-decoration: none;
             display: block;
             width: 100%;
@@ -56,6 +56,10 @@
             background-color: #C0CEE3;
             color: #000;
         }
+        .design_store {
+            background-color: #C0CEE3;
+            color: #000;
+        }
 
         .content, .other, .other2, .other3, .other4, .other5 {
             width: 100%;
@@ -65,23 +69,23 @@
         }
 
         .other {
-            display: none;
+            visibility: hidden;
         }
 
         .other2 {
-            display: none;
+            visibility: hidden;
         }
 
         .other3 {
-            display: none;
+            visibility: hidden;
         }
 
         .other4 {
-            display: none;
+            visibility: hidden;
         }
 
         .other5 {
-            display: none;
+            visibility: hidden;
         }
 
         .inp {
@@ -142,6 +146,42 @@
             font-variant: small-caps;
         }
     </style>
+    <script>
+        function register() {
+            $(".content").css("display", "none")
+            $(".other").css("visibility", "visible")
+            $(".login").css({ "background-color": "#4B5768", "color": "#fff" })
+            $(".register").css({ "background-color": "#C0CEE3", "color": "#000" })
+            alert("")
+        }
+        function design_store() {
+            $("a").removeClass("active")
+            $("#design_store").addClass("active")
+
+        }
+
+        function create_acount() {
+            $("a").removeClass("active")
+            $("#create_acount").addClass("active")
+      
+        }
+        function create_product() {
+            $("a").removeClass("active")
+            $("#create_product").addClass("active")
+        }
+        function make_admin() {
+            $("a").removeClass("active")
+            $("#make_admin").addClass("active")
+        }
+        function update_product() {
+            $("a").removeClass("active")
+            $("#update_product").addClass("active")
+        }
+        function go_back() {
+            $("a").removeClass("active")
+            $("#go_back").addClass("active")
+        }
+    </script>
 </head>
 <body>
     <!--<div class="bg">
@@ -158,12 +198,12 @@
         </div>
 
         <div id="tab-btn">
-            <a href="#" class="design_store active">Design store</a>
-            <a href="#" class="create_acount">Create account</a>
-            <a href="#" class="create_product">Add product</a>
-            <a href="#" class="make_admin">Make user admin</a>
-            <a href="#" class="update_product">Update product amount</a>
-            <a href="#" class="go_back">Back to the login page</a>
+            <a class="active" href="#" id="design_store" onclick="design_store()">Design store</a>
+            <a href="#" id="create_acount" onclick="create_acount()">Create account</a>
+            <a href="#" id="create_product" onclick="create_product()">Add product</a>
+            <a href="#" id="make_admin" onclick="make_admin()">Make user admin</a>
+            <a href="#" id="update_product" onclick="update_product()">Update product amount</a>
+            <a href="#" id="go_back" onclick="go_back()">Back to the login page</a>
         </div>
         <div class="content">
             <h2>Store designer</h2>

@@ -40,7 +40,7 @@
             justify-content: center;
         }
 
-        .login, .register {
+        a {
             border: solid 2px #323232;
             text-decoration: none;
             display: block;
@@ -52,6 +52,16 @@
             padding: 10px;
         }
 
+        /* mouse over link */
+        a:hover {
+            color: yellowgreen;
+        }
+
+        /* selected link */
+        a:active {
+            background-color: #C0CEE3;
+            color: #000;
+        } 
         .active {
             background-color: #C0CEE3;
             color: #000;
@@ -65,8 +75,15 @@
         }
 
         .other {
-            display: none;
+            visibility: hidden;
+            
         }
+        .login {
+            background-color: #C0CEE3;
+            color: #000;
+        }
+
+
 
         .inp {
             width: 100%;
@@ -126,6 +143,43 @@
             font-variant: small-caps;
         }
     </style>
+
+    <script>
+        $(document).ready();
+        function CreateAccount() { }
+
+        function LoginValidation() {
+            $.ajax({
+
+                url: "/api/customers",
+                type: "get",
+                dataType: "json",
+                contentType: "",
+                data: JSON.stringify(), // to chto otprovlyayu
+                success: function (res) {
+                    if (res == true) {
+
+                    }
+                    else {
+
+                    }
+                },
+                error: function (err) {
+
+                }
+            })
+        }
+        function register() {
+            $(".content").css("display", "none")
+            $(".other").css("visibility", "visible")
+            $(".login").css({ "background-color": "#4B5768", "color": "#fff" })
+            $(".register").css({ "background-color": "#C0CEE3", "color": "#000" })
+        }
+        function login() {
+            location.reload();
+ 
+        }
+    </script>
 </head>
 <body>
     <div id="main">
@@ -133,8 +187,8 @@
             <h1 name="header" id="header-id" class="header">U-Jewelries</h1>
         </div>
         <div id="tab-btn">
-            <a href="#" class="login active">Login</a>
-            <a href="#" class="register">Register</a>
+            <a href="#" class="login" onclick="login()">Login</a>
+            <a href="#" class="register" onclick="register()">Register</a>
         </div>
         <div class="content">
             <h2>Login</h2>
