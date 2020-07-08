@@ -64,7 +64,6 @@ C:\HubC\source\U-Jewelries\Ujewelries_API\bin\System.Web.WebPages.Deployment.dll
 C:\HubC\source\U-Jewelries\Ujewelries_API\bin\System.Web.WebPages.dll
 C:\HubC\source\U-Jewelries\Ujewelries_API\bin\System.Web.WebPages.Razor.dll
 C:\HubC\source\U-Jewelries\Ujewelries_API\bin\WebGrease.dll
-C:\HubC\source\U-Jewelries\Ujewelries_API\bin\Newtonsoft.Json.xml
 C:\HubC\source\U-Jewelries\Ujewelries_API\bin\System.Net.Http.Formatting.xml
 C:\HubC\source\U-Jewelries\Ujewelries_API\bin\System.Web.Helpers.xml
 C:\HubC\source\U-Jewelries\Ujewelries_API\bin\System.Web.Http.xml

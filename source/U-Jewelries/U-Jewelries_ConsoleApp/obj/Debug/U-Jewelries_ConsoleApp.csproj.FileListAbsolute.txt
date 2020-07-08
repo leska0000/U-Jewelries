@@ -30,7 +30,6 @@ C:\HubC\source\U-Jewelries\U-Jewelries_ConsoleApp\bin\Debug\System.Web.Optimizat
 C:\HubC\source\U-Jewelries\U-Jewelries_ConsoleApp\bin\Debug\System.Web.Mvc.xml
 C:\HubC\source\U-Jewelries\U-Jewelries_ConsoleApp\bin\Debug\System.Web.Http.xml
 C:\HubC\source\U-Jewelries\U-Jewelries_ConsoleApp\bin\Debug\System.Net.Http.Formatting.xml
-C:\HubC\source\U-Jewelries\U-Jewelries_ConsoleApp\bin\Debug\Newtonsoft.Json.xml
 C:\HubC\source\U-Jewelries\U-Jewelries_ConsoleApp\bin\Debug\System.Web.Http.WebHost.xml
 C:\HubC\source\U-Jewelries\U-Jewelries_ConsoleApp\bin\Debug\System.Web.WebPages.xml
 C:\HubC\source\U-Jewelries\U-Jewelries_ConsoleApp\bin\Debug\System.Web.WebPages.Razor.xml
