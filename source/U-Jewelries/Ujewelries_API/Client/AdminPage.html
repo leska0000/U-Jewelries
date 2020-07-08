@@ -147,39 +147,84 @@
         }
     </style>
     <script>
-        function register() {
-            $(".content").css("display", "none")
-            $(".other").css("visibility", "visible")
-            $(".login").css({ "background-color": "#4B5768", "color": "#fff" })
-            $(".register").css({ "background-color": "#C0CEE3", "color": "#000" })
-            alert("")
-        }
+        let CreateAcount = `<h2>Create account</h2>
+            <form action="#" method="get" id="create-box">
+                <input id="newId" type="number" placeholder="id" class="inp" required autofocus />
+                <input id="newName" type="text" placeholder="Name" class="inp" required autofocus />
+                <input id="newLoginName" type="text" placeholder="Login name" class="inp" required autofocus />
+                <input id="newPassword" type="password" placeholder="Password" class="inp" required autofocus />
+                <input id="newIsManager" type="text" placeholder="Manager account?" class="inp" required autofocus />
+                <button class="sub-btn" type="button" id="createAcc" onclick="CreateAccount()">Create account</button>
+            </form>`
+        let AddProduct =`            <h2>Add product</h2>
+            <form action="#" method="get" id="add-box">
+                <input id="newProductName" type="text" placeholder="Name" class="inp" required autofocus />
+                <input id="newPrice" type="number" placeholder="Price" class="inp" required autofocus />
+                <input id="newCost" type="number" placeholder="Cost" class="inp" required autofocus />
+                <input id="newInv" type="number" placeholder="Amount" class="inp" required autofocus />
+                <select id="categories" placeholder="Choose category" class="inp" required autofocus></select>
+                <input id="newIsActive" type="text" placeholder="Is active?" class="inp" required autofocus />
+                <input type="file" id="new_img" class="sub-btn" />
+                <button class="sub-btn" type="button" id="createProd" onclick="CreateProduct()">Create product</button>
+            </form>`
+        let MakeAdmn = `            <h2>Make user admin</h2>
+            <form action="#" method="get" id="admin-box">
+                <input id="newAdminId" type="number" placeholder="Id" class="inp" required autofocus />
+                <button class="sub-btn" type="button" onclick="AdminMaker()">Update user admin state</button>
+            </form>`
+        let UpdateProduct = `            <h2>Update product amount</h2>
+            <form action="#" method="get" id="update-box">
+                <input id="ProductToBeUpadtedName" type="text" placeholder="Product name" class="inp" required autofocus />
+                <input id="newAmountToBeAdded" type="number" placeholder="Amount" class="inp" required autofocus />
+                <button class="sub-btn" type="button" onclick="updateAmount()">Update amount</button>
+            </form>`
+        let StoreDesigner = `            <h2>Store designer</h2>
+            <form action="#" method="get" id="design-store">
+                <input id="storeName" type="text" placeholder="New store name" class="inp" required autofocus />
+                <button class="sub-btn" type="button" onclick="changeName()">Change name</button>
+            </form>`
+        let GoBack = `            <h2>Back to the login page</h2>
+            <form action="#" method="get" id="back-box">
+                <button class="sub-btn" type="button" onclick="login()">Go</button>
+            </form>`
         function design_store() {
             $("a").removeClass("active")
             $("#design_store").addClass("active")
+            $(".content").empty()
+            $(".content").append(StoreDesigner)
 
         }
 
         function create_acount() {
             $("a").removeClass("active")
             $("#create_acount").addClass("active")
+            $(".content").empty()
+            $(".content").append(CreateAcount)
       
         }
         function create_product() {
             $("a").removeClass("active")
             $("#create_product").addClass("active")
+            $(".content").empty()
+            $(".content").append(AddProduct)
         }
         function make_admin() {
             $("a").removeClass("active")
             $("#make_admin").addClass("active")
+            $(".content").empty()
+            $(".content").append(MakeAdmn)
         }
         function update_product() {
             $("a").removeClass("active")
             $("#update_product").addClass("active")
+            $(".content").empty()
+            $(".content").append(CreateAcount)
         }
         function go_back() {
             $("a").removeClass("active")
             $("#go_back").addClass("active")
+            $(".content").empty()
+            $(".content").append(GoBack)
         }
     </script>
 </head>
@@ -212,37 +257,37 @@
                 <button class="sub-btn" type="button" onclick="changeName()">Change name</button>
             </form>
         </div>
-        <div class="other5">
-            <h2>Create account</h2>
-            <form action="#" method="get" id="create-box">
-                <input id="newId" type="number" placeholder="id" class="inp" required autofocus />
-                <input id="newName" type="text" placeholder="Name" class="inp" required autofocus />
-                <input id="newLoginName" type="text" placeholder="Login name" class="inp" required autofocus />
-                <input id="newPassword" type="password" placeholder="Password" class="inp" required autofocus />
-                <input id="newIsManager" type="text" placeholder="Manager account?" class="inp" required autofocus />
-                <button class="sub-btn" type="button" id="createAcc" onclick="CreateAccount()">Create account</button>
-            </form>
-        </div>
-        <div class="other">
-            <h2>Add product</h2>
-            <form action="#" method="get" id="add-box">
-                <input id="newProductName" type="text" placeholder="Name" class="inp" required autofocus />
-                <input id="newPrice" type="number" placeholder="Price" class="inp" required autofocus />
-                <input id="newCost" type="number" placeholder="Cost" class="inp" required autofocus />
-                <input id="newInv" type="number" placeholder="Amount" class="inp" required autofocus />
-                <select id="categories" placeholder="Choose category" class="inp" required autofocus></select>
-                <input id="newIsActive" type="text" placeholder="Is active?" class="inp" required autofocus />
-                <input type="file" id="new_img" class="sub-btn" />
-                <button class="sub-btn" type="button" id="createProd" onclick="CreateProduct()">Create product</button>
-            </form>
-        </div>
-        <div class="other2">
-            <h2>Make user admin</h2>
-            <form action="#" method="get" id="admin-box">
-                <input id="newAdminId" type="number" placeholder="Id" class="inp" required autofocus />
-                <button class="sub-btn" type="button" onclick="AdminMaker()">Update user admin state</button>
-            </form>
-        </div>
+        <!-- <div class="other5">
+        <h2>Create account</h2>
+        <form action="#" method="get" id="create-box">
+            <input id="newId" type="number" placeholder="id" class="inp" required autofocus />
+            <input id="newName" type="text" placeholder="Name" class="inp" required autofocus />
+            <input id="newLoginName" type="text" placeholder="Login name" class="inp" required autofocus />
+            <input id="newPassword" type="password" placeholder="Password" class="inp" required autofocus />
+            <input id="newIsManager" type="text" placeholder="Manager account?" class="inp" required autofocus />
+            <button class="sub-btn" type="button" id="createAcc" onclick="CreateAccount()">Create account</button>
+        </form>
+    </div>
+    <div class="other">
+        <h2>Add product</h2>
+        <form action="#" method="get" id="add-box">
+            <input id="newProductName" type="text" placeholder="Name" class="inp" required autofocus />
+            <input id="newPrice" type="number" placeholder="Price" class="inp" required autofocus />
+            <input id="newCost" type="number" placeholder="Cost" class="inp" required autofocus />
+            <input id="newInv" type="number" placeholder="Amount" class="inp" required autofocus />
+            <select id="categories" placeholder="Choose category" class="inp" required autofocus></select>
+            <input id="newIsActive" type="text" placeholder="Is active?" class="inp" required autofocus />
+            <input type="file" id="new_img" class="sub-btn" />
+            <button class="sub-btn" type="button" id="createProd" onclick="CreateProduct()">Create product</button>
+        </form>
+    </div>
+       <div class="other2">
+           <h2>Make user admin</h2>
+           <form action="#" method="get" id="admin-box">
+               <input id="newAdminId" type="number" placeholder="Id" class="inp" required autofocus />
+               <button class="sub-btn" type="button" onclick="AdminMaker()">Update user admin state</button>
+           </form>
+       </div>
         <div class="other3">
             <h2>Update product amount</h2>
             <form action="#" method="get" id="update-box">
@@ -256,7 +301,7 @@
             <form action="#" method="get" id="back-box">
                 <button class="sub-btn" type="button" onclick="login()">Go</button>
             </form>
-        </div>
+        </div>-->
     </div>
 </body>
 </html>
