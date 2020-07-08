@@ -145,63 +145,15 @@
     </style>
 
     <script>
-        $(document).ready();
-        function CreateAccount() { }
-
-        function LoginValidation() {
-            $.ajax({
-
-                url: "/api/customers",
-                type: "get",
-                dataType: "json",
-                contentType: "",
-                data: JSON.stringify(), // to chto otprovlyayu
-                success: function (res) {
-                    //if (res == true) {
-                        alert(res)
-                    //}
-                   // else {
-
-                  //  }
-                },
-                error: function (err) {
-
-                }
-            })
-        }
-        function register() {
-            $(".content").css("display", "none")
-            $(".other").css("visibility", "visible")
-            $(".login").css({ "background-color": "#4B5768", "color": "#fff" })
-            $(".register").css({ "background-color": "#C0CEE3", "color": "#000" })
-        }
-        function login() {
-            location.reload();
- 
-        }
-    </script>
-</head>
-<body>
-    <div id="main">
-        <div>
-            <h1 name="header" id="header-id" class="header">U-Jewelries</h1>
-        </div>
-        <div id="tab-btn">
-            <a href="#" class="login" onclick="login()">Login</a>
-            <a href="#" class="register" onclick="register()">Register</a>
-        </div>
-        <div class="content">
-            <h2>Login</h2>
+        let Login = `<h2>Login</h2>
             <form action="#" method="get" id="login-box">
-                <input id="login_name" type="text" placeholder="Login name" class="inp" required autofocus />
+                <input id="login_name" type="text" placeholder="ID" class="inp" required autofocus />
                 <input id="password" type="text" placeholder="Password" class="inp" required autofocus />
                 <br />
                 <button id="login" class="sub-btn" type="button" onclick="LoginValidation()">Login</button>
                 <br />
-            </form>
-        </div>
-        <div class="other">
-            <h2>Create account</h2>
+            </form>`
+        let CreateAcc = `            <h2>Create account</h2>
             <form action="#" method="get" id="reg-box">
                 <input id="newId" type="number" placeholder="id" class="inp" required autofocus />
                 <br />
@@ -212,6 +164,123 @@
                 <input id="newPassword" type="password" placeholder="Password" class="inp" required autofocus />
                 <br />
                 <button id="register" class="sub-btn" type="button" onclick="CreateAccount()">Create account</button>
+            </form>`
+        //$(document).ready();
+
+        function CreateAccount() {
+            let LogData = $('#newId').val()
+            let NameData = $('#newName').val()
+            let PassData = $('#newPassword').val()
+            let SendingData = {
+                id: LogData,
+                name: NameData,
+                password: PassData,
+            }
+            if (LogData != "") {
+                if (PassData != "") {
+                    $.ajax({
+
+                        url: "/api/customers",
+                        type: "POSTREG",
+                        dataType: "json",
+                        contentType: "application/json",
+                        data: JSON.stringify(SendingData), // to chto otprovlyayu
+                        success: function (res) {
+                            if (res == true) {
+                                alert("Good customer data")
+                            }
+                            else {
+                                alert("wrong Login or password")
+                            }
+                        },
+                        error: function (err) {
+
+                        }
+                    })
+                }
+                else {
+                    alert('Please enter password.')
+                }
+
+            }
+        }
+
+        function LoginValidation() {
+            let LogData = $('#login_name').val()
+            let PassData = $('#password').val()
+            let SendingData = {
+                id: LogData,
+                password: PassData,
+            }
+            if (LogData != "") {
+                if (PassData != "") {
+                    $.ajax({
+
+                        url: "/api/customers",
+                        type: "POST",
+                        dataType: "json",
+                        contentType: "application/json",
+                        data: JSON.stringify(SendingData), // to chto otprovlyayu
+                        success: function (res) {
+                            if (res == true) {
+                                alert("Good customer data")
+                            }
+                            else {
+                                alert("wrong Login or password")
+                            }
+                        },
+                        error: function (err) {
+
+                        }
+                    })
+                }
+                else {
+                    alert('Please enter password.')
+                }
+            }
+            else{
+                if (PassData != "") {
+                    alert('Please enter login.')
+                }
+                else {
+                    alert('Please enter login and password.')
+                }
+            }
+            
+        }
+
+        function register() {
+            $("a").removeClass("active")
+            $("#register").addClass("active")
+            $(".content").empty()
+            $(".content").append(CreateAcc)
+        }
+        function login() {
+            $("a").removeClass("active")
+            $("#login").addClass("active")
+            $(".content").empty()
+            $(".content").append(Login)
+
+        }
+    </script>
+</head>
+<body>
+    <div id="main">
+        <div>
+            <h1 name="header" id="header-id" class="header">U-Jewelries</h1>
+        </div>
+        <div id="tab-btn">
+            <a class="active" href="#" id="login" onclick="login()">Login</a>
+            <a href="#" id="register" onclick="register()">Register</a>
+        </div>
+        <div class="content">
+            <h2>Login</h2>
+            <form action="#" method="get" id="login-box">
+                <input id="login_name" type="text" placeholder="ID" class="inp" required autofocus />
+                <input id="password" type="text" placeholder="Password" class="inp" required autofocus />
+                <br />
+                <button id="login" class="sub-btn" type="button" onclick="LoginValidation()">Login</button>
+                <br />
             </form>
         </div>
     </div>

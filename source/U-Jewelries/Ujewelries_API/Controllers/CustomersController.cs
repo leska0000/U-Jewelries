@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using U_Jewelries_ClassLibrary.EF;
 using U_Jewelries_ClassLibrary.Servecses;
+using U_Jewelries_ClassLibrary.DTO;
 
 namespace Ujewelries_API.Controllers
 {
@@ -24,8 +25,15 @@ namespace Ujewelries_API.Controllers
         }
 
         // POST api/<controller>
-        public void Post([FromBody] string value)
+        public bool Post(LoginDto data)
         {
+                return UjewelriesService.ChackPasswordCustomer(Int32.Parse(data.id), data.password);
+        }
+
+        // POSTREG api/<controller>
+        public bool PostReg(RegistrationDto data)
+        {
+            return UjewelriesService.CreateCustomer(data.id, data.name, data.password);
         }
 
         // PUT api/<controller>/5
