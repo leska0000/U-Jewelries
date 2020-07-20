@@ -193,8 +193,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\AdminRegisterationDTO.cs" />
     <Compile Include="DTO\LoginDto.cs" />
+    <Compile Include="DTO\ProductDTO.cs" />
     <Compile Include="DTO\RegistrationDto.cs" />
+    <Compile Include="DTO\SupplierDTO.cs" />
     <Compile Include="EF\Costumer.cs">
       <DependentUpon>UjewelriesDBModel.tt</DependentUpon>
     </Compile>

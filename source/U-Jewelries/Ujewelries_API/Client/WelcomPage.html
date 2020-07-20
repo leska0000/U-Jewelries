@@ -165,45 +165,47 @@
                 <br />
                 <button id="register" class="sub-btn" type="button" onclick="CreateAccount()">Create account</button>
             </form>`
-        //$(document).ready();
+
 
         function CreateAccount() {
+         
             let LogData = $('#newId').val()
             let NameData = $('#newName').val()
             let PassData = $('#newPassword').val()
-            let SendingData = {
+            let SData = {
                 id: LogData,
                 name: NameData,
                 password: PassData,
             }
             if (LogData != "") {
                 if (PassData != "") {
-                    $.ajax({
 
-                        url: "/api/customers",
-                        type: "POSTREG",
-                        dataType: "json",
-                        contentType: "application/json",
-                        data: JSON.stringify(SendingData), // to chto otprovlyayu
-                        success: function (res) {
-                            if (res == true) {
-                                alert("Good customer data")
-                            }
-                            else {
-                                alert("wrong Login or password")
-                            }
-                        },
-                        error: function (err) {
+            $.ajax({
 
-                        }
-                    })
+                url: "/api/customers/",
+                type: "PUT",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(SData), // to chto otprovlyayu
+                success: function (res) {
+                    if (res == true) {
+                        alert("Good customer data")
+                    }
+                    else {
+                        alert("wrong Login or password")
+                    }
+                },
+                error: function (err) {
+
                 }
-                else {
-                    alert('Please enter password.')
+            });
                 }
+              else {
+                   alert("Please enter password.")
+               }
 
-            }
-        }
+          }
+        };
 
         function LoginValidation() {
             let LogData = $('#login_name').val()
@@ -216,17 +218,21 @@
                 if (PassData != "") {
                     $.ajax({
 
-                        url: "/api/customers",
+                        url: "/api/customers/",
                         type: "POST",
                         dataType: "json",
                         contentType: "application/json",
                         data: JSON.stringify(SendingData), // to chto otprovlyayu
                         success: function (res) {
-                            if (res == true) {
-                                alert("Good customer data")
+                            //alert(res)
+                            if (res == "Admin") {
+                                alert("Hello Admin")
+                            }
+                            else if (res == "Client") {
+                                alert("Hello")
                             }
                             else {
-                                alert("wrong Login or password")
+                                alert("Wrong password or id ")
                             }
                         },
                         error: function (err) {
@@ -247,7 +253,7 @@
                 }
             }
             
-        }
+        };
 
         function register() {
             $("a").removeClass("active")

@@ -12,38 +12,23 @@ namespace Ujewelries_API.Controllers
 {
     public class CustomersController : ApiController
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "Customer", "value2" };
-        }
-
-        // GET api/<controller>/5
-        public string Get(int id)
-        {
-            return "value";
-        }
 
         // POST api/<controller>
-        public bool Post(LoginDto data)
+        [Route("api/customers")]
+        [HttpPost]
+        public string Post(LoginDto data)
         {
                 return UjewelriesService.ChackPasswordCustomer(Int32.Parse(data.id), data.password);
         }
 
-        // POSTREG api/<controller>
-        public bool PostReg(RegistrationDto data)
+
+        // PUT api/<controller>
+        [Route("api/customers")]
+        [HttpPut]
+        public bool Registration(RegistrationDto data)
         {
-            return UjewelriesService.CreateCustomer(data.id, data.name, data.password);
+            return UjewelriesService.CreateCustomer(Int32.Parse(data.id), data.name, data.password);
         }
 
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
-        }
     }
 }
