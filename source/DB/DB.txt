@@ -1,0 +1,38 @@
+CREATE TABLE [dbo].[Customer] (
+    [auto_Id]     INT        NOT NULL,
+    [personal_id] INT        NOT NULL,
+    [name]        NCHAR (50) NULL,
+    [login_name]  NCHAR (50) NOT NULL,
+    [password]    NCHAR (50) NOT NULL,
+    [is_manager]  BIT        NULL,
+    PRIMARY KEY CLUSTERED ([auto_Id] ASC)
+);
+
+CREATE TABLE [dbo].[Category] (
+    [Id]            INT        NOT NULL,
+    [category_name] NCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+CREATE TABLE [dbo].[Product] (
+    [Id] INT NOT NULL,
+    [name] CHAR(50) NULL, 
+    [price] FLOAT NOT NULL, 
+    [cost] FLOAT NULL, 
+    [amount] INT NOT NULL, 
+    [is_active] BIT NULL, 
+    [category_id] INT NULL, 
+    [img_url] CHAR(250) NULL, 
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+CREATE TABLE [dbo].[Properties]
+(
+	[Id] INT NOT NULL , 
+    [product_id] INT NOT NULL, 
+    [costumer_id] INT NOT NULL, 
+    [amount] FLOAT NULL, 
+    [costumer_person] NCHAR(10) NULL, 
+    [purchase_date] DATE NULL, 
+    PRIMARY KEY ([Id])
+)

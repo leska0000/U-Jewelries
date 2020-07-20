@@ -3,7 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "U-Jewelries.DB", "U-Jewelries.DB\U-Jewelries.DB.vbproj", "{9E9CFA39-9CAE-4DDD-830B-2D73CF266792}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "U-Jewelries_ClassLibrary", "U-Jewelries_ClassLibrary\U-Jewelries_ClassLibrary.csproj", "{C8BA4141-DBD5-47DF-BA29-5084D26F6A1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "U-Jewelries_ConsoleApp", "U-Jewelries_ConsoleApp\U-Jewelries_ConsoleApp.csproj", "{AC567255-0BE7-45DC-A54D-029E9D00BE03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ujewelries_API", "Ujewelries_API\Ujewelries_API.csproj", "{BE63D668-2348-4025-B4BD-6CACC1AB39B2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D06F351F-D782-4B7F-85E7-0B5D949D7338}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +20,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9E9CFA39-9CAE-4DDD-830B-2D73CF266792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9E9CFA39-9CAE-4DDD-830B-2D73CF266792}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9E9CFA39-9CAE-4DDD-830B-2D73CF266792}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9E9CFA39-9CAE-4DDD-830B-2D73CF266792}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8BA4141-DBD5-47DF-BA29-5084D26F6A1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8BA4141-DBD5-47DF-BA29-5084D26F6A1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8BA4141-DBD5-47DF-BA29-5084D26F6A1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8BA4141-DBD5-47DF-BA29-5084D26F6A1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC567255-0BE7-45DC-A54D-029E9D00BE03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC567255-0BE7-45DC-A54D-029E9D00BE03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC567255-0BE7-45DC-A54D-029E9D00BE03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC567255-0BE7-45DC-A54D-029E9D00BE03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE63D668-2348-4025-B4BD-6CACC1AB39B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE63D668-2348-4025-B4BD-6CACC1AB39B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE63D668-2348-4025-B4BD-6CACC1AB39B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE63D668-2348-4025-B4BD-6CACC1AB39B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

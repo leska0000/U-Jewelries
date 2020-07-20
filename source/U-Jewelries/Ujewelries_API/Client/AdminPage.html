@@ -1,0 +1,459 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <title>Admin managmet</title>
+    <link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            font-family: 'Cabin';
+        }
+
+        body {
+            background: url(https://goldwallpapers.com/uploads/posts/jewellery-background-wallpaper/jewellery_background_wallpaper_002.jpg) no-repeat center center fixed;
+            background-color: #323232;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        #main {
+            width: 45%;
+            margin: 200px auto;
+        }
+
+        #tab-btn {
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            width: 100%;
+            justify-content: center;
+        }
+
+        a {
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            background-color: #4B5768;
+            border: solid 2px #323232;
+            text-align: center;
+            color: #fff;
+            font-size: 25px;
+            padding: 10px;
+        }
+
+        .active {
+            background-color: #C0CEE3;
+            color: #000;
+        }
+        .design_store {
+            background-color: #C0CEE3;
+            color: #000;
+        }
+
+        .content, .other, .other2, .other3, .other4, .other5 {
+            width: 100%;
+            background-color: #525252;
+            padding: 20px 30px 30px 30px;
+            box-shadow: 2px 2px 5px #333;
+        }
+
+        .other {
+            visibility: hidden;
+        }
+
+        .other2 {
+            visibility: hidden;
+        }
+
+        .other3 {
+            visibility: hidden;
+        }
+
+        .other4 {
+            visibility: hidden;
+        }
+
+        .other5 {
+            visibility: hidden;
+        }
+
+        .inp {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            font-size: 20px;
+            border: 2px solid #888;
+            border-bottom: 5px solid #888;
+            background-color: #fff;
+            color: #666;
+        }
+
+            .inp:focus {
+                outline: none;
+                border: 2px solid #555;
+                border-bottom: 5px solid #555;
+            }
+
+        .sub-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: #2873E8;
+            color: #fff;
+            cursor: pointer;
+            border-bottom: 5px solid #444;
+        }
+
+            .sub-btn:focus {
+                outline: none;
+            }
+
+            .sub-btn:active {
+                border: none;
+                margin-top: 5px;
+            }
+
+            .sub-btn:hover {
+                background-color: #52D66A;
+            }
+
+        h2 {
+            text-align: center;
+            padding-bottom: 15px;
+            color: white;
+            font-size: 30px;
+            font-variant: small-caps;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 15px;
+            color: white;
+            font-size: 60px;
+            font-variant: small-caps;
+        }
+    </style>
+    <script>
+        $(document).ready(Start)
+        let ArrSuppliers = []
+        let CreateAcount = `<h2>Create account</h2>
+            <form action="#" method="get" id="create-box">
+                <input id="newId" type="number" placeholder="id" class="inp" required autofocus />
+                <input id="newName" type="text" placeholder="Name" class="inp" required autofocus />
+                <input id="newLoginName" type="text" placeholder="Login name" class="inp" required autofocus />
+                <input id="newPassword" type="password" placeholder="Password" class="inp" required autofocus />
+                <input id="newIsManager" type="text" placeholder="Manager account?" class="inp" required autofocus />
+                <button class="sub-btn" type="button" id="createAcc" onclick="CreateAccount()">Create account</button>
+            </form>`
+        let AddProduct =`            <h2>Add product</h2>
+            <form action="#" method="get" id="add-box">
+                <input id="newId" type="number" placeholder="id" class="inp" required autofocus />
+                <input id="newProductName" type="text" placeholder="Name" class="inp" required autofocus />
+                <input id="newPrice" type="number" placeholder="Price" class="inp" required autofocus />
+                <input id="newCost" type="number" placeholder="Cost" class="inp" required autofocus />
+                <input id="newInv" type="number" placeholder="Amount" class="inp" required autofocus />
+                <input id="categories" type="text" placeholder="Category" class="inp" required autofocus></select>
+                <select id="Supplier" type="text" placeholder="Supplier" class="inp" required autofocus></select>
+                <input id="newIsActive" type="text" placeholder="Is active?" class="inp" required autofocus />
+                <input type="file" id="new_img" class="sub-btn" />
+                <button class="sub-btn" type="button" id="createProd" onclick="CreateProduct()">Create product</button>
+            </form>`
+        let MakeAdmn = `            <h2>Make user admin</h2>
+            <form action="#" method="get" id="admin-box">
+                <input id="newAdminId" type="number" placeholder="Id" class="inp" required autofocus />
+                <button class="sub-btn" type="button" onclick="AdminMaker()">Update user admin state</button>
+            </form>`
+        let UpdateProduct = `            <h2>Update product amount</h2>
+            <form action="#" method="get" id="update-box">
+                 <input id="newId" type="number" placeholder="id" class="inp" required autofocus />
+                <input id="newProductName" type="text" placeholder="Name" class="inp" required autofocus />
+                <input id="newPrice" type="number" placeholder="Price" class="inp" required autofocus />
+                <input id="newCost" type="number" placeholder="Cost" class="inp" required autofocus />
+                <input id="newInv" type="number" placeholder="Amount" class="inp" required autofocus />
+                <input id="categories" type="text" placeholder="Category" class="inp" required autofocus></select>
+                <select id="Supplier" type="text" placeholder="Supplier" class="inp" required autofocus></select>
+                <input id="newIsActive" type="text" placeholder="Is active?" class="inp" required autofocus />
+                <button class="sub-btn" type="button" onclick="updateProdact()">Update product</button>
+            </form>`
+        let StoreDesigner = `            <h2>Store designer</h2>
+            <form action="#" method="get" id="design-store">
+                <input id="storeName" type="text" placeholder="New store name" class="inp" required autofocus />
+                <button class="sub-btn" type="button" onclick="changeName()">Change name</button>
+            </form>`
+        let GoBack = `            <h2>Back to the login page</h2>
+            <form action="#" method="get" id="back-box">
+                <button class="sub-btn" type="button" onclick="login()">Go</button>
+            </form>`
+        function setSuppData() {
+            for (i of ArrSuppliers) {
+                let $temp = document.createElement("option");
+                $temp.setAttribute('value', i.supplier_id);
+                $temp.setAttribute('type', "text");
+                $temp.append(i.name);
+                $('#Supplier').append($temp);
+            };
+        }
+        function Start() {
+            $.ajax({
+                dataType: "json",
+                url: "/api/suppliers/",
+                contentType: "application/json; charset=utf-8",
+                type: "GET",
+                //data: JSON.stringify(Data), // to chto otprovlyayu
+                success: function (res) {
+                    ArrSuppliers = res 
+                },
+                error: function (err) {
+                    alert("Error")
+                }
+            })
+               // < option value = "1" > Completed</option >
+
+        };
+
+        function CreateAccount() {
+            let Data = {
+                id: $('#newId').val(),
+                name: $('#newName').val(),
+                password: $('#newPassword').val(),
+                Admin: $('#newIsManager').val()
+            }
+            $.ajax({
+
+                 dataType: "json",
+                 url: "/api/admin/",
+                 contentType: "application/json; charset=utf-8",
+                 type: "PUT",
+                 data: JSON.stringify(Data), // to chto otprovlyayu
+                 success: function (res) {
+                 if (res == true) {
+                     alert("Good customer data")
+                  }
+                  else {
+                      alert("wrong Login or password")
+                  }
+                     },
+                  error: function (err) {
+                        alert(err)
+                   }
+            })
+
+        };
+
+        function CreateProduct() {
+            let new_img = $('#new_img').val()
+            let Data = {
+                name: $('#newProductName').val(),
+                id: $('#newId').val(),
+                price: $('#newPrice').val(),
+                cost: $('#newCost').val(),
+                inv: $('#newInv').val(),
+                supplier_id: $('#Supplier').val(),
+                category: $('#categories').val(),
+                is_active: $('#newIsActive').val()
+            }
+            $.ajax({
+                dataType: "json",
+                url: "/api/Product/",
+                contentType: "application/json; charset=utf-8",
+                type: "POST",
+                data: JSON.stringify(Data), // to chto otprovlyayu
+                success: function (res) {
+                    if (res == true) {
+                        alert("Prodact added")
+                    }
+                    else {
+                        alert("wrong adding")
+                    }
+                },
+                error: function (err) {
+                    alert(err)
+                }
+            })
+        };
+     
+        function AdminMaker() {
+            let data = {
+                id: $('#newAdminId').val(),
+                password: ""
+            };
+
+            $.ajax({
+                dataType: "json",
+                url: "/api/admin/mua/",
+                contentType: "application/json; charset=utf-8",
+                type: "GET",
+                data: JSON.stringify(data), // to chto otprovlyayu
+                timeout: 5000,
+                success: function (res) {
+                    alert(res)
+                },
+                error: function (err) {
+                    alert(err)
+                }
+            })
+        };
+
+        function updateProdact() {
+            let Data = {
+                name: $('#newProductName').val(),
+                id: $('#newId').val(),
+                price: $('#newPrice').val(),
+                cost: $('#newCost').val(),
+                inv: $('#newInv').val(),
+                supplier_id: $('#Supplier').val(),
+                category: $('#categories').val(),
+                is_active: $('#newIsActive').val()
+            }
+            $.ajax({
+                dataType: "json",
+                url: "/api/admin/mua/",
+                contentType: "application/json; charset=utf-8",
+                type: "PUT",
+                data: JSON.stringify(Data), // to chto otprovlyayu
+                success: function (res) {
+                    if (res == true) {
+                        alert("Update completed")
+                    }
+                    else {
+                        alert("wrong update")
+                    }
+                },
+                error: function (err) {
+                    alert(err)
+                }
+            })
+        };
+
+        function changeName() {
+            $.ajax({
+                dataType: "json",
+                url: "/api/admin/",
+                timeout: 5000,
+                contentType: "application/json; charset=utf-8",
+                type: "GET",
+                //data: JSON.stringify(SData), // to chto otprovlyayu
+                success: function (res) {
+                    if (res == true) {
+                        alert("Good customer data")
+                    }
+                    else {
+                        alert("wrong Login or password")
+                    }
+                },
+                error: function (err) {
+                    alert(err)
+                }
+            })
+        };
+
+        function login() {
+            $.ajax({
+                dataType: "json",
+                url: "/api/admin/",
+                timeout: 5000,
+                contentType: "application/json; charset=utf-8",
+                type: "GET",
+                //data: JSON.stringify(SData), // to chto otprovlyayu
+                success: function (res) {
+                    if (res == true) {
+                        alert("Good customer data")
+                    }
+                    else {
+                        alert("wrong Login or password")
+                    }
+                },
+                error: function (err) {
+                    alert(err)
+                }
+            })
+        };
+      
+        function design_store() {
+            $("a").removeClass("active")
+            $("#design_store").addClass("active")
+            $(".content").empty()
+            $(".content").append(StoreDesigner)
+
+        }
+
+        function create_acount() {
+            $("a").removeClass("active")
+            $("#create_acount").addClass("active")
+            $(".content").empty()
+            $(".content").append(CreateAcount)
+      
+        }
+        function create_product() {
+            $("a").removeClass("active")
+            $("#create_product").addClass("active")
+            $(".content").empty()
+            $(".content").append(AddProduct)
+            setSuppData()
+        }
+        function make_admin() {
+            $("a").removeClass("active")
+            $("#make_admin").addClass("active")
+            $(".content").empty()
+            $(".content").append(MakeAdmn)
+        }
+        function update_product() {
+            $("a").removeClass("active")
+            $("#update_product").addClass("active")
+            $(".content").empty()
+            $(".content").append(UpdateProduct)
+            setSuppData()
+        }
+        function go_back() {
+            $("a").removeClass("active")
+            $("#go_back").addClass("active")
+            $(".content").empty()
+            $(".content").append(GoBack)
+        }
+    </script>
+</head>
+<body >
+    <!--<div class="bg">
+        <h1>Admin page</h1>
+
+
+
+    </div>-->
+
+
+    <div id="main">
+        <div>
+            <h1 name="header" id="header-id" class="header">U-Jewelries</h1>
+        </div>
+
+        <div id="tab-btn">
+            <a class="active" href="#" id="design_store" onclick="design_store()">Design store</a>
+            <a href="#" id="create_acount" onclick="create_acount()">Create account</a>
+            <a href="#" id="create_product" onclick="create_product()">Add product</a>
+            <a href="#" id="make_admin" onclick="make_admin()">Make user admin</a>
+            <a href="#" id="update_product" onclick="update_product()">Update product amount</a>
+            <a href="#" id="go_back" onclick="go_back()">Back to the login page</a>
+        </div>
+        <div class="content">
+            <h2>Store designer</h2>
+            <form action="#" method="get" id="design-store">
+                <input id="storeName" type="text" placeholder="New store name" class="inp" required autofocus />
+                <button class="sub-btn" type="button" onclick="changeName()">Change name</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+<assembly><name>Newtonsoft.Json.FSharp</name></assembly>
+<members>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:Newtonsoft.Json.FSharp.BigIntConverter">
+<summary>
+ Converter for BigInteger types from F#.
+</summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:Newtonsoft.Json.FSharp.CultureInfoConverter">
+<summary>
+ Reads and writes &lt;see cref=&quot;System.Globlization.CultureInfo&quot; /&gt;.
+</summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:Newtonsoft.Json.FSharp.GuidConverter">
+<summary>
+ GUID converter
+</summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:Newtonsoft.Json.FSharp.ListConverter">
+<summary>
+ A converter for F# lists
+</summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:Newtonsoft.Json.FSharp.MapConverter">
+<summary>
+ Inspired from http://www.simontylercousins.net/journal/2013/3/21/json-converter-for-f-map-type.html
+ but doesn&apos;t do {items:[{key: k1, value: v1}]}, but {k1:v1}.
+</summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:Newtonsoft.Json.FSharp.OptionConverter">
+<summary>
+ F# options-converter
+</summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:Newtonsoft.Json.FSharp.TupleArrayConverter">
+<summary>
+ Converter converting tuples to arrays
+</summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:Newtonsoft.Json.FSharp.UnionConverter">
+<summary>
+ Discriminated union converter
+</summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:Newtonsoft.Json.FSharp.UriConverter">
+<summary>
+ Reads and writes &lt;see cref=&quot;System.Uri&quot; /&gt;.
+</summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:Newtonsoft.Json.FSharp.Logging.Logger">
+<summary>
+ The primary Logger abstraction that you can log data into
+</summary>
+</member>
+<member name="P:Newtonsoft.Json.FSharp.Logging.LogLine.timestamp">
+<summary>
+ timestamp when this log line was created
+</summary>
+</member>
+<member name="P:Newtonsoft.Json.FSharp.Logging.LogLine.data">
+<summary>
+ any key-value based data to log
+</summary>
+</member>
+<member name="P:Newtonsoft.Json.FSharp.Logging.LogLine.message">
+<summary>
+ the message that the application wants to log
+</summary>
+</member>
+<member name="P:Newtonsoft.Json.FSharp.Logging.LogLine.path">
+<summary>
+ the source of the log line, e.g. &apos;ModuleName.FunctionName&apos;
+</summary>
+</member>
+<member name="P:Newtonsoft.Json.FSharp.Logging.LogLine.level">
+<summary>
+ the level that this log line has
+</summary>
+</member>
+<member name="T:Newtonsoft.Json.FSharp.Logging.LogLine">
+<summary>
+ When logging, write a log line like this with the source of your
+ log line as well as a message and an optional exception.
+</summary>
+</member>
+<member name="T:Newtonsoft.Json.FSharp.Logging.LogLevel.Fatal">
+<summary>
+ The least verbose level. Will only pass through fatal
+ log lines that cause the application to crash or become
+ unusable.
+</summary>
+</member>
+<member name="T:Newtonsoft.Json.FSharp.Logging.LogLevel.Error">
+<summary>
+ Less verbose than Warn, more verbose than Fatal
+</summary>
+</member>
+<member name="T:Newtonsoft.Json.FSharp.Logging.LogLevel.Warn">
+<summary>
+ Less verbose than Info, more verbose than Error
+</summary>
+</member>
+<member name="T:Newtonsoft.Json.FSharp.Logging.LogLevel.Info">
+<summary>
+ Less verbose than Debug, more verbose than Warn
+</summary>
+</member>
+<member name="T:Newtonsoft.Json.FSharp.Logging.LogLevel.Debug">
+<summary>
+ Less verbose than Verbose, more verbose than Info
+</summary>
+</member>
+<member name="T:Newtonsoft.Json.FSharp.Logging.LogLevel.Verbose">
+<summary>
+ The most verbose log level, more verbose than Debug.
+</summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="M:Newtonsoft.Json.FSharp.Logging.LogLevel.ToString">
+<summary>
+ Convert the LogLevel to a string
+</summary>
+</member>
+<member name="M:Newtonsoft.Json.FSharp.Logging.LogLevel.ToInt">
+<summary>
+ Turn the LogLevel into an integer
+</summary>
+</member>
+<member name="">
+
+</member>
+<member name="M:Newtonsoft.Json.FSharp.Logging.LogLevel.FromString(System.String)">
+<summary>
+ Converts the string passed to a Loglevel.
+</summary>
+</member>
+<member name="M:Newtonsoft.Json.FSharp.Logging.LogLevel.FromInt(System.Int32)">
+<summary>
+ Turn an integer into a LogLevel
+</summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:Newtonsoft.Json.FSharp.Logging.LogLevel">
+<summary>
+ The log levels specify the severity of the message.
+</summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:Newtonsoft.Json.FSharp.Logging.LoggerModule">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:Newtonsoft.Json.FSharp.Logging.LogLineModule">
+
+</member>
+<member name="T:Newtonsoft.Json.FSharp.Logging">
+
+</member>
+<member name="M:Newtonsoft.Json.FSharp.Serialisation.serialiserPair``2">
+<summary>
+ Shortcut with non-configurable JsonOptions
+</summary>
+</member>
+<member name="M:Newtonsoft.Json.FSharp.Serialisation.serialiser``2(Newtonsoft.Json.JsonSerializerSettings)">
+<summary>
+ Return the serialize and deserialize methods.
+ The serialize method takes an object and returns its event
+ type as a string and a byte array with the serialized data
+</summary>
+</member>
+<member name="">
+
+</member>
+<member name="M:Newtonsoft.Json.FSharp.Serialisation.deserialise(Newtonsoft.Json.JsonSerializerSettings,System.Type,System.Byte[])">
+<summary>
+ Deserialise to the type t, from the data in the byte array
+</summary>
+</member>
+<member name="">
+
+</member>
+<member name="M:Newtonsoft.Json.FSharp.Serialisation.serialise``1(Newtonsoft.Json.JsonSerializerSettings,``0)">
+<summary>
+ Serialise the passed object to JSON using the default
+ JsonSerializer settings, and return the type name
+ and the data of the type as a tuple. Uses indented formatting.
+</summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="M:Newtonsoft.Json.FSharp.Serialisation.ConfigureForFSharp(Newtonsoft.Json.JsonSerializerSettings)">
+<summary>
+ Extend the passed JsonSerializerSettings with
+ the converters defined in this module/assembly.
+</summary>
+</member>
+<member name="T:Newtonsoft.Json.FSharp.Serialisation">
+<summary>
+ Module interface for the goodies in the Newtonsoft.Json.FSharp assembly.
+</summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="T:Newtonsoft.Json.FSharp.SerialisationFunctions">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="M:Newtonsoft.Json.FSharp.TypeNaming.Type.ToPartiallyQualifiedName(System.Type)">
+<summary>
+ Convert the type to a partially qualified name that also contains
+ the types of the type parameters (if the type is generic).
+ Throws argument exception if the type is an open generic type.
+</summary>
+</member>
+<member name="M:Newtonsoft.Json.FSharp.TypeNaming.parse(System.String)">
+<summary>
+ parse a URN to a UrnTypeName
+</summary>
+</member>
+<member name="M:Newtonsoft.Json.FSharp.TypeNaming.nameObj``1(``0)">
+<summary>
+ Get the name for an object instance.
+</summary>
+</member>
+<member name="">
+
+</member>
+<member name="">
+
+</member>
+<member name="M:Newtonsoft.Json.FSharp.TypeNaming.|Until|_|(System.Char,System.String)">
+<summary>
+ Return None if c-char is never met
+</summary>
+</member>
+<member name="">
+
+</member>
+<member name="M:Newtonsoft.Json.FSharp.TypeNaming.implode(Microsoft.FSharp.Collections.FSharpList{System.Char})">
+<summary>
+ Converts a list of characters into a string.
+</summary>
+</member>
+<member name="M:Newtonsoft.Json.FSharp.TypeNaming.explode(System.String)">
+<summary>
+ Converts a string into a list of characters.
+</summary>
+</member>
+<member name="T:Newtonsoft.Json.FSharp.TypeNaming">
+
+</member>
+</members>
+</doc>

@@ -1,0 +1,294 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <title>Login</title>
+    <link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            font-family: 'Cabin';
+        }
+
+        body {
+            background: url(https://goldwallpapers.com/uploads/posts/jewellery-background-wallpaper/jewellery_background_wallpaper_002.jpg) no-repeat center center fixed;
+            background-color: #323232;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        #main {
+            width: 35%;
+            margin: 180px auto;
+        }
+
+        #tab-btn {
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            width: 100%;
+            justify-content: center;
+        }
+
+        a {
+            border: solid 2px #323232;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            background-color: #4B5768;
+            text-align: center;
+            color: #fff;
+            font-size: 25px;
+            padding: 10px;
+        }
+
+        /* mouse over link */
+        a:hover {
+            color: yellowgreen;
+        }
+
+        /* selected link */
+        a:active {
+            background-color: #C0CEE3;
+            color: #000;
+        } 
+        .active {
+            background-color: #C0CEE3;
+            color: #000;
+        }
+
+        .content, .other {
+            width: 100%;
+            background-color: #525252;
+            padding: 20px 30px 30px 30px;
+            box-shadow: 2px 2px 5px #333;
+        }
+
+        .other {
+            visibility: hidden;
+            
+        }
+        .login {
+            background-color: #C0CEE3;
+            color: #000;
+        }
+
+
+
+        .inp {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            font-size: 20px;
+            border: 2px solid #888;
+            border-bottom: 5px solid #888;
+            background-color: #fff;
+            color: #666;
+        }
+
+            .inp:focus {
+                outline: none;
+                border: 2px solid #555;
+                border-bottom: 5px solid #555;
+            }
+
+        .sub-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: #2873E8;
+            color: #fff;
+            cursor: pointer;
+            border-bottom: 5px solid #444;
+        }
+
+            .sub-btn:focus {
+                outline: none;
+            }
+
+            .sub-btn:active {
+                border: none;
+                margin-top: 5px;
+            }
+
+            .sub-btn:hover {
+                background-color: #52D66A;
+            }
+
+        h2 {
+            text-align: center;
+            padding-bottom: 15px;
+            color: white;
+            font-size: 30px;
+            font-variant: small-caps;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 15px;
+            color: white;
+            font-size: 60px;
+            font-variant: small-caps;
+        }
+    </style>
+
+    <script>
+        let Login = `<h2>Login</h2>
+            <form action="#" method="get" id="login-box">
+                <input id="login_name" type="text" placeholder="ID" class="inp" required autofocus />
+                <input id="password" type="text" placeholder="Password" class="inp" required autofocus />
+                <br />
+                <button id="login" class="sub-btn" type="button" onclick="LoginValidation()">Login</button>
+                <br />
+            </form>`
+        let CreateAcc = `            <h2>Create account</h2>
+            <form action="#" method="get" id="reg-box">
+                <input id="newId" type="number" placeholder="id" class="inp" required autofocus />
+                <br />
+                <input id="newName" type="text" placeholder="Name" class="inp" required autofocus />
+                <br />
+                <input id="newLoginName" type="text" placeholder="Login name" class="inp" required autofocus />
+                <br />
+                <input id="newPassword" type="password" placeholder="Password" class="inp" required autofocus />
+                <br />
+                <button id="register" class="sub-btn" type="button" onclick="CreateAccount()">Create account</button>
+            </form>`
+
+
+        function CreateAccount() {
+         
+            let LogData = $('#newId').val()
+            let NameData = $('#newName').val()
+            let PassData = $('#newPassword').val()
+            let SData = {
+                id: LogData,
+                name: NameData,
+                password: PassData,
+            }
+            if (LogData != "") {
+                if (PassData != "") {
+
+            $.ajax({
+
+                url: "/api/customers/",
+                type: "PUT",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(SData), // to chto otprovlyayu
+                success: function (res) {
+                    if (res == true) {
+                        alert("Good customer data")
+                    }
+                    else {
+                        alert("wrong Login or password")
+                    }
+                },
+                error: function (err) {
+
+                }
+            });
+                }
+              else {
+                   alert("Please enter password.")
+               }
+
+          }
+        };
+
+        function LoginValidation() {
+            let LogData = $('#login_name').val()
+            let PassData = $('#password').val()
+            let SendingData = {
+                id: LogData,
+                password: PassData,
+            }
+            if (LogData != "") {
+                if (PassData != "") {
+                    $.ajax({
+
+                        url: "/api/customers/",
+                        type: "POST",
+                        dataType: "json",
+                        contentType: "application/json",
+                        data: JSON.stringify(SendingData), // to chto otprovlyayu
+                        success: function (res) {
+                            //alert(res)
+                            if (res == "Admin") {
+                                alert("Hello Admin")
+                            }
+                            else if (res == "Client") {
+                                alert("Hello")
+                            }
+                            else {
+                                alert("Wrong password or id ")
+                            }
+                        },
+                        error: function (err) {
+
+                        }
+                    })
+                }
+                else {
+                    alert('Please enter password.')
+                }
+            }
+            else{
+                if (PassData != "") {
+                    alert('Please enter login.')
+                }
+                else {
+                    alert('Please enter login and password.')
+                }
+            }
+            
+        };
+
+        function register() {
+            $("a").removeClass("active")
+            $("#register").addClass("active")
+            $(".content").empty()
+            $(".content").append(CreateAcc)
+        }
+        function login() {
+            $("a").removeClass("active")
+            $("#login").addClass("active")
+            $(".content").empty()
+            $(".content").append(Login)
+
+        }
+    </script>
+</head>
+<body>
+    <div id="main">
+        <div>
+            <h1 name="header" id="header-id" class="header">U-Jewelries</h1>
+        </div>
+        <div id="tab-btn">
+            <a class="active" href="#" id="login" onclick="login()">Login</a>
+            <a href="#" id="register" onclick="register()">Register</a>
+        </div>
+        <div class="content">
+            <h2>Login</h2>
+            <form action="#" method="get" id="login-box">
+                <input id="login_name" type="text" placeholder="ID" class="inp" required autofocus />
+                <input id="password" type="text" placeholder="Password" class="inp" required autofocus />
+                <br />
+                <button id="login" class="sub-btn" type="button" onclick="LoginValidation()">Login</button>
+                <br />
+            </form>
+        </div>
+    </div>
+</body>
+</html>
