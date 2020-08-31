@@ -179,6 +179,7 @@
         let UpdateProduct = `            <h2>Update product amount</h2>
             <form action="#" method="get" id="update-box">
                  <input id="newId" type="number" placeholder="id" class="inp" required autofocus />
+                 <button class="sub-btn" type="button" onclick="UploadProdactData()">Serch</button>
                 <input id="newProductName" type="text" placeholder="Name" class="inp" required autofocus />
                 <input id="newPrice" type="number" placeholder="Price" class="inp" required autofocus />
                 <input id="newCost" type="number" placeholder="Cost" class="inp" required autofocus />
@@ -206,6 +207,43 @@
                 $('#Supplier').append($temp);
             };
         }
+        function UploadProdactData() {
+            let Data = {
+                name: "",
+                id: $('#newId').val(),
+                price: "",
+                cost: "",
+                inv: "",
+                supplier_id: "",
+                category: "",
+                is_active: ""
+            };
+            $.ajax({
+                url: "/api/product/",
+                type: "PUT",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(Data), // to chto otprovlyayu
+                success: function (data) {
+
+                    $('#newProductName').val(data.name);
+                    $('#newPrice').val(data.price);
+                    $('#newCost').val(data.cost);
+                    $('#newInv').val(data.inv);
+                    //let temp = parseInt(data.supplier_id, 10) - 1;
+                    $('#Supplier').val(parseInt(data.supplier_id, 10) - 1);
+                    $('#categories').val(data.category);
+                    $('#newIsActive').val(data.is_active);
+                },
+                error: function (err) {
+                    alert(err)
+
+                }
+            });
+
+           
+        };
+
         function Start() {
             $.ajax({
                 dataType: "json",
@@ -360,27 +398,7 @@
             })
         };
 
-        function login() {
-            $.ajax({
-                dataType: "json",
-                url: "/api/admin/",
-                timeout: 5000,
-                contentType: "application/json; charset=utf-8",
-                type: "GET",
-                //data: JSON.stringify(SData), // to chto otprovlyayu
-                success: function (res) {
-                    if (res == true) {
-                        alert("Good customer data")
-                    }
-                    else {
-                        alert("wrong Login or password")
-                    }
-                },
-                error: function (err) {
-                    alert(err)
-                }
-            })
-        };
+        function login() { document.location.href = "WelcomPage.html";};
       
         function design_store() {
             $("a").removeClass("active")

@@ -4,23 +4,30 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using U_Jewelries_ClassLibrary.DTO;
+using U_Jewelries_ClassLibrary.EF;
 using U_Jewelries_ClassLibrary.Servecses;
+using U_Jewelries_ClassLibrary.DTO;
 
 namespace Ujewelries_API.Controllers
 {
     public class ProductController : ApiController
     {
         // GET api/<controller>
-        public IEnumerable<string> Get()
+
+        [Route("api/Product")]
+        [HttpPut]
+        public ProductDTO GetProduct(ProductDTO data)
         {
-            return new string[] { "value1", "value2" };
+            return UjewelriesService.GetProductByID(data);
+
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
+        // GET api/<controller>/
+        [Route("api/Product")]
+        [HttpGet]
+        public List<ProductDTO> GetArr()
         {
-            return "value";
+            return UjewelriesService.AllProductsDTO();
         }
 
         // POST api/<controller>
@@ -34,11 +41,6 @@ namespace Ujewelries_API.Controllers
                                                     Int32.Parse(value.inv), Int32.Parse(value.supplier_id),
                                                     value.category, bool.Parse(value.is_active)
                                                     );
-        }
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody] string value)
-        {
         }
 
         // DELETE api/<controller>/5

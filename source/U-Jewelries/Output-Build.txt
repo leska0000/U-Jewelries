@@ -1,0 +1,7 @@
+﻿1>------ Rebuild All started: Project: U-Jewelries_ClassLibrary, Configuration: Debug Any CPU ------
+1>C:\BackUp\latest\U-Jewelries\U-Jewelries_ClassLibrary\Servecses\UjewelriesService.cs(131,37,131,38): warning CS0168: The variable 'e' is declared but never used
+1>C:\BackUp\latest\U-Jewelries\U-Jewelries_ClassLibrary\Servecses\UjewelriesService.cs(299,17,299,18): warning CS0219: The variable 'j' is assigned but its value is never used
+1>  U-Jewelries_ClassLibrary -> C:\BackUp\latest\U-Jewelries\U-Jewelries_ClassLibrary\bin\Debug\U-Jewelries_ClassLibrary.dll
+2>------ Rebuild All started: Project: Ujewelries_API, Configuration: Debug Any CPU ------
+2>  Ujewelries_API -> C:\BackUp\latest\U-Jewelries\Ujewelries_API\bin\Ujewelries_API.dll
+========== Rebuild All: 2 succeeded, 0 failed, 0 skipped ==========

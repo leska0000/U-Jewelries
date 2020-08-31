@@ -173,6 +173,135 @@
         }
     </style>
 
+    <script>
+        let flag = 0;
+        let onOff = 1;
+        function MakeTable() {
+            let costumer = JSON.parse(localStorage.getItem("costumer"));
+            let products = JSON.parse(localStorage.getItem("products"));
+
+            let counter = 0;
+            let flags = [];
+            let $title = $("<h1>").html("Thanks you: " + costumer.name + ".").appendTo("#container");
+            let sum = 0;
+            for (i in products) {
+                sum = sum + parseInt(products[i].price) * parseInt(products[i].buyAmount);
+            }
+            let $sumBuy = $("<h2>").html("you payed: " + sum + " shekels this time, see you next time!").appendTo("#container");
+            let $table = $("<table>");
+            let $tr = $("<tr>");
+            $("<td>").html("Name").appendTo($tr);
+            $("<td>").html("Amount").appendTo($tr);
+            $("<td>").html("Price").appendTo($tr);
+            $($table).append($tr);
+            for (i in products) {
+                if (parseInt(products[i].buyAmount) > 0) {
+                    let $tr = $("<tr>")
+                    $("<td>").html(products[i].name).attr({ id: "name" + counter }).appendTo($tr);
+                    $("<td>").html(products[i].buyAmount).attr({ id: "amount" + counter }).prop("flag", "0").appendTo($tr);
+                    $("<td>").html(products[i].price).attr({ id: "price" + counter }).appendTo($tr);
+                    counter++;
+                    $($table).append($tr);
+                    $("#container").append($table);
+                }
+            }
+            $("<br />").appendTo("#container");
+            $("<br />").appendTo("#container");
+            $('<button>Back to the shop</button>').attr({ id: 'pay', class: 'sub-btn' }).click(function () {
+                document.location.href = "ProductsPage.html";
+            }).appendTo("#container");
+            $('<button>Back to the login page</button>').attr({ id: 'login', class: 'sub-btn' }).click(function () {
+                document.location.href = "WelcomPage.html";
+            }).appendTo("#container");
+            $('<button>Purchase history</button>').attr({ id: 'history', class: 'sub-btn' }).click(function () {
+                if (flag == 0) {
+                    flag = 1;
+                    $.ajax({
+                        dataType: "json",
+                        url: "api/Products/GetHistory/?id=" + costumer.personal_id,
+                        contentType: "application/json; charset=utf-8",
+                        type: "GET",
+                        //data: JSON.stringify({}),
+                        success: function (data) {
+                            if (data != null) {
+                                let counter = 0;
+                                let flags = [];
+                                let $div = $("<div>").attr({ id: "historyDiv" });
+                                let $title = $("<h1>").html("Purchase history").attr({ id: "title" }).appendTo("#container");
+                                let $table = $("<table>");
+                                let $tr = $("<tr>");
+                                let error = 0;
+                                let check = 0;
+                                let solved = 0;
+                                enable = 1;
+                                $("<td>").html("Name").appendTo($tr);
+                                $("<td>").html("Category").appendTo($tr);
+                                $("<td>").html("Amount").appendTo($tr);
+                                $("<td>").html("Price").appendTo($tr);
+                                $("<td>").html("Date").appendTo($tr);
+                                $($table).append($tr);
+                                for (i in data) {
+                                    if (data[i].is_active == false) { continue; }
+                                    let $tr = $("<tr>")
+                                    $("<td>").html(data[i].productName).attr({ id: "name" + counter }).appendTo($tr);
+                                    $("<td>").html(data[i].category).attr({ id: "category" + counter }).appendTo($tr);
+                                    $("<td>").html(data[i].price).attr({ id: "price" + counter }).appendTo($tr);
+                                    $("<td>").html(data[i].amount).attr({ id: "amount" + counter }).prop("flag", "0").appendTo($tr);
+                                    $("<td>").html(data[i].date).attr({ id: "date" + counter }).appendTo($tr);
+                                    counter++;
+                                    $($table).append($tr);
+                                    $($div).append($table);
+                                    $("#container").append($div);
+                                }
+                            }
+                            else {
+                                alert("No purchase history.");
+                            }
+                        },
+                        error: function (err) {
+                            alert("Error while getting the purchase history.");
+                        }
+                    });
+                }
+                if (onOff == 0) {
+                    $("#historyDiv").hide();
+                    $("#title").hide();
+                    onOff = 1;
+                }
+                else if (onOff == 1) {
+                    $("#historyDiv").show();
+                    $("#title").show();
+                    onOff = 0;
+                }
+                $("<br />").appendTo("#container");
+                $("<br />").appendTo("#container");
+            }).appendTo("#container");
+        }
+        MakeTable();
+        /*
+        function GetShopName() {
+            $.ajax({
+                dataType: "json",
+                url: "api/design/GetShopName",
+                contentType: "application/json; charset=utf-8",
+                type: "GET",
+                success: function (data) {
+                    if (data != null) {
+                        $("#header-id").text(data);
+                    }
+                    else {
+                        alert("Cant load shop information.");
+                    }
+                },
+                error: function (err) {
+                    alert("Error cload shop information please refresh the page.");
+                }
+            });
+        }
+        */
+        GetShopName();
+    </script>
+
 </head>
 <body>
     <div id="main">
