@@ -16,7 +16,7 @@ namespace Ujewelries_API.Controllers
         // POST api/<controller>
         [Route("api/customers")]
         [HttpPost]
-        public string Post(LoginDto data)
+        public LoginDto Post(LoginDto data)
         {
                 return UjewelriesService.ChackPasswordCustomer(Int32.Parse(data.id), data.password);
         }

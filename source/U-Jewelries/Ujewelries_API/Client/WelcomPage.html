@@ -165,7 +165,7 @@
                 <br />
                 <button id="register" class="sub-btn" type="button" onclick="CreateAccount()">Create account</button>
             </form>`
-
+        let dataTransfer = {}
 
         function CreateAccount() {
          
@@ -225,11 +225,19 @@
                         data: JSON.stringify(SendingData), // to chto otprovlyayu
                         success: function (res) {
                             //alert(res)
-                            if (res == "Admin") {
-                                alert("Hello Admin")
+                            if (res.id == "Admin") {
+                                //localStorage.setItem("costumer", JSON.stringify(data));
+                                document.location.href = "AdminPage.html";
+                                //alert("Hello Admin");
                             }
-                            else if (res == "Client") {
-                                alert("Hello")
+                            else if (res.id == "Client") {
+                                delete res["Purchases"];
+                                dataTransfer.id = SendingData.id;
+                                dataTransfer.name = res.password;
+                                dataTransfer.status = res.id;
+                                localStorage.setItem("costumer", JSON.stringify(dataTransfer));
+                                document.location.href = "ProductsPage.html";
+                               // alert("Hello");
                             }
                             else {
                                 alert("Wrong password or id ")

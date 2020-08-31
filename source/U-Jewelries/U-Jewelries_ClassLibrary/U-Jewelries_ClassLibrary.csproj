@@ -196,6 +196,7 @@
     <Compile Include="DTO\AdminRegisterationDTO.cs" />
     <Compile Include="DTO\LoginDto.cs" />
     <Compile Include="DTO\ProductDTO.cs" />
+    <Compile Include="DTO\PurchaseDTO.cs" />
     <Compile Include="DTO\RegistrationDto.cs" />
     <Compile Include="DTO\SupplierDTO.cs" />
     <Compile Include="EF\Costumer.cs">

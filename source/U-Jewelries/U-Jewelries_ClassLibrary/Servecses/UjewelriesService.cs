@@ -17,6 +17,27 @@ namespace U_Jewelries_ClassLibrary.Servecses
             return db.Costumers.ToList();
         }
 
+        public static List<ProductDTO> AllProductsDTO()
+        {
+            UjewelriesDBContext db = new UjewelriesDBContext();
+            List<ProductDTO> tempProductList = new List<ProductDTO>();
+            foreach(Product temp in db.Products.Where(a=>a.is_active == true).ToList())
+            {
+                tempProductList.Add(new ProductDTO
+                {
+                    price = temp.price.ToString(),
+                    id = temp.id.ToString(),
+                    inv = temp.inv.ToString(),
+                    is_active = temp.is_active.ToString(),
+                    name = temp.name,
+                    supplier_id = temp.supplier_id.ToString(),
+                    category = temp.category,
+                    cost = temp.cost.ToString()
+                });
+
+            }
+            return tempProductList;
+        }
         public static List<Product> AllProducts()
         {
             UjewelriesDBContext db = new UjewelriesDBContext();
@@ -87,22 +108,25 @@ namespace U_Jewelries_ClassLibrary.Servecses
             return true;
         }
 
-        public static string ChackPasswordCustomer(int id, string password)
+        public static LoginDto ChackPasswordCustomer(int id, string password)
         {
             UjewelriesDBContext db = new UjewelriesDBContext();
+            LoginDto dto = new LoginDto();
             try
             {
                 Costumer Selected = db.Costumers.Where(a => a.id == id).ToList().First();
-
+                dto.password = Selected.name;
                 if (Selected.password == password)
                 {
                     if (Selected.is_manager == true)
                     {
-                        return "Admin";
+                        dto.id = "Admin";
+                        return dto;
                     }
                     else
-                    {
-                        return "Client";
+                    { 
+                        dto.id = "Client";
+                        return dto;
                     }
                     
                 }
@@ -111,8 +135,9 @@ namespace U_Jewelries_ClassLibrary.Servecses
             {
                 Console.WriteLine("Password or Username wrong!!");
             }
-
-            return "false";
+            dto.id = "false";
+            dto.id = "";
+            return dto;
         }
 
         public static bool CreateProduct(string id, string name, double price, double cost, int inv, int supplier_id, string category, bool is_active)
@@ -144,7 +169,29 @@ namespace U_Jewelries_ClassLibrary.Servecses
             return true;
         }
 
-
+        public static ProductDTO GetProductByID(ProductDTO product)
+        {
+            try
+            {
+                UjewelriesDBContext db = new UjewelriesDBContext();
+                Product temp = db.Products.Where(a => a.id == product.id).ToList()[0];
+                return new ProductDTO
+                {
+                    price = temp.price.ToString(),
+                    id = temp.id.ToString(),
+                    inv = temp.inv.ToString(),
+                    is_active = temp.is_active.ToString(),
+                    name = temp.name,
+                    supplier_id = temp.supplier_id.ToString(),
+                    category = temp.category,
+                    cost = temp.cost.ToString()
+                };
+            }
+            catch
+            {
+                return product;
+            }
+        }
         public static bool UpdateProduct(ProductDTO data)
         {
             try
@@ -224,7 +271,7 @@ namespace U_Jewelries_ClassLibrary.Servecses
             }
             return true;
         }
-        public static bool UCTM(LoginDto data)
+        public static bool UCTM(LoginDto data)// set admin account
         {
             try { 
                     UjewelriesDBContext db = new UjewelriesDBContext();
@@ -286,6 +333,28 @@ namespace U_Jewelries_ClassLibrary.Servecses
                 });
             }
             return Req;
+        }
+
+        public static List<PurchaseDTO> GetHistoryById(string id)
+        {
+            UjewelriesDBContext db = new UjewelriesDBContext();
+            int CId = Int32.Parse(id);
+            List<Purchase> temp = db.Purchases.Where(a => a.costumer_id == CId).ToList();
+            List<PurchaseDTO> SenArr = new List<PurchaseDTO>();
+            foreach(Purchase i in temp)
+            {
+                SenArr.Add(new PurchaseDTO
+                {
+                    costumer_id = i.costumer_id.ToString(),
+                    product_id = i.product_id.ToString(),
+                    amount = i.amount.ToString(),
+                    purchase_date = i.purchase_date.ToString(),
+                    purchase_id = i.purchase_id.ToString(),
+                    product_name = db.Products.Where(a => a.id == i.product_id).ToList()[0].name
+
+                });
+            }
+            return SenArr;
         }
     }
 }
